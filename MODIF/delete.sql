@@ -1,5 +1,0 @@
-DROP TABLE IF EXISTS 'acteurs';
-DROP TABLE IF EXISTS 'classification';
-DROP TABLE IF EXISTS 'genres';
-DROP TABLE IF EXISTS 'individus';
-DROP TABLE IF EXISTS 'films';
