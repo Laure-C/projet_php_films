@@ -1,0 +1,60 @@
+body{
+  background-color: azure;
+  font-size: 1.5em;
+  font-family: Arial Narrow, sans-serif;
+  margin: -5px;
+  width: 100%;
+  height: 100%;
+}
+h1{
+  font-size: 3em;
+  text-align: center;
+}
+h2{
+  font-size: 1.25em;
+}
+img{
+  width: 4em;
+  background-image: white;
+}
+a{
+  color: white;
+  text-decoration: none;
+}
+.hauthaut{
+  display: grid;
+  align-items: center;
+  grid-template-columns: 25% 25% 25% 25%;
+  color: white;
+  background-color: menutext;
+}
+.hautbas{
+  padding: 1%;
+  text-align: center;
+  color: white;
+  background-color: orange;
+}
+.contenue{
+  padding: 1%;
+}
+.pageactive{
+  padding: 2%;
+  margin-right: 50%;
+  background-color: orange;
+}
+.bas{text-align: center;}
+
+
+/* CSS des filtres */
+.asideG{
+  background-color: menutext;
+  width: 35%;
+  display: grid;
+  align-items: center;
+  color: white;
+}
+.f{
+}
+.filtres{
+  grid-template-columns: 50% 50%;
+}
