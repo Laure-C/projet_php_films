@@ -20,8 +20,10 @@
 
     <div class = "main">
     <?php
-    require('autoComp.php');
     require('listeDeroulante.php');
+    require('autoComp.php');
+    require('sql.php');
+
     $questions=[
         array(
             "name" => "Nom",
@@ -40,23 +42,28 @@
             "text" => "Genre du film ",
         ),
 
-        array(
-            "name" => "Pays",
-            "type" => "text-autoCompil",
-            "text" => "Pays ",
-        ),
+        // array(
+        //     "name" => "Pays",
+        //     "type" => "text-autoCompil",
+        //     "text" => "Pays ",
+        // ),
+
+        // array(
+        //     "name" => "Realisateur",
+        //     "type" => "text-autoCompil",
+        //     "text" => "Réalisateur.rice ",
+        // ),
 
         array(
-            "name" => "Realisateur",
-            "type" => "text-autoCompil",
-            "text" => "Réalisateur.rice ",
+            "name" => "Duree",
+            "type" => "duree",
+            "text" => "Durée en minute",
         ),
-
 
         array(
             "name" => "Image",
-            "type" => "image",
-            "text" => "Image ",
+            "type" => "text",
+            "text" => "Image",
         )
             ];
 
@@ -65,6 +72,7 @@
 function question_text($q){
     echo $q['text'] ."<br/><input type='text' name='$q[name]'><br/>";
 }
+
 
 function question_autoCompil($q){
     if ($q['name']=="Pays"){    
@@ -80,29 +88,32 @@ function question_autoCompil($q){
 
 }
 
-
+function question_duree($q){
+    echo $q['text'] ."<br/><input type='range' id='rangeDuree' name='rangeDuree' min='30' max='300' value='130' step='2' onchange='updateTextInput(this.value);'> <br/>"; 
+}
 
 function question_listeDeroulante($q){
-    echo $q['text'] .listeDeroulGenres();
+
+    echo $q['text'];
+    echo listeDeroulante(genres());
 }
 
 
 $question_handlers = array(
     "text" => "question_text",
-    "radio" => "question_radio",
     "listeDeroulante" => "question_listeDeroulante",
-    "text-autoCompil"  => "question_autoCompil",
-    "image" => "question_image"
+    // "text-autoCompil"  => "question_autoCompil",
+    "duree" => "question_duree"
 );
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     // On présente les questions
     echo "<fieldset>
-    <legend>ajout film informations</legend><br/><br/>";
+    <legend>Ajout film informations</legend><br/>";
     echo "<form method='POST' action='AjouterFilm.php'><ol>";
     foreach ($questions as $q){
-        echo "<li>";
+        echo "<br/>";
         $question_handlers[$q['type']]($q);
     }
     echo "</ol><input type='submit' value='Valider Ajout'></form><fieldset>";
