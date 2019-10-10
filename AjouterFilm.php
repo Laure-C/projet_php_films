@@ -20,6 +20,8 @@
 
     <div class = "main">
     <?php
+    require('autoComp.php');
+    require('listeDeroulante.php');
     $questions=[
         array(
             "name" => "Nom",
@@ -39,20 +41,20 @@
         ),
 
         array(
-            "name" => "Genre",
+            "name" => "Pays",
             "type" => "text-autoCompil",
             "text" => "Pays ",
         ),
 
         array(
-            "name" => "Genre",
+            "name" => "Realisateur",
             "type" => "text-autoCompil",
             "text" => "Réalisateur.rice ",
         ),
 
 
         array(
-            "name" => "Genre",
+            "name" => "Image",
             "type" => "image",
             "text" => "Image ",
         )
@@ -65,31 +67,36 @@ function question_text($q){
 }
 
 function question_autoCompil($q){
-    echo $q['text'] ."";
-}
-
-
-function question_radio($q){
-    $html = $q['text'] . "<br/>";
-    $i = 0;
-    foreach($q['choices'] as $c){
-        $i += 1;
-        $html .= "<input type='radio' name='$q[name]' value='$c[value]' id='$q[name]-$i'>";
-        $html .= "<label for='$q[name]-$i'>$c[text]</label>";
+    if ($q['name']=="Pays"){    
+        echo $q['text'] .auto_compilation('p');
     }
-    echo $html;
+
+    if ($q['name']=="Nationnalite"){
+        echo $q['text'] .auto_compilation('n');
+    }
+    // else{
+    //     echo $q['text'] .auto_compilation('r');
+    // }
+
 }
+
+
+
+function question_listeDeroulante($q){
+    echo $q['text'] .listeDeroulGenres();
+}
+
 
 $question_handlers = array(
     "text" => "question_text",
     "radio" => "question_radio",
-    "listeDeroulante" => "question_checkbox",
+    "listeDeroulante" => "question_listeDeroulante",
     "text-autoCompil"  => "question_autoCompil",
     "image" => "question_image"
 );
 
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET'){
+if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     // On présente les questions
     echo "<fieldset>
     <legend>ajout film informations</legend><br/><br/>";
