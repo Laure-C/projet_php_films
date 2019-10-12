@@ -23,14 +23,17 @@
     <!-- Contenue de la page -->
     <div class="contenuGerer">
       <div class="choisir">
-      <form name="choixFilm" action="AjouterFilm.php" method="post">
-      <input type="submit" value="Ajouter un ou plusieurs film.s">
-      </form>
+        <p>Avant de pouvoir ajouter un film vous devez ajouter un genre et un réalisateur.rice s'il n'existe pas su le site ! <br/> </p>
       <form name="choixIndiv" action="AjouterIndiv.php" method="post">
       <input type="submit" value="Ajouter un ou plusieurs individu.s">
       </form>
+      <br/> 
       <form name="choixGenre" action="AjouterGenre.php" method="post">
       <input type="submit" value="Ajouter un ou plusieurs genre.s">
+      </form>
+      <br/> 
+      <form name="choixFilm" action="AjouterFilm.php" method="post">
+      <input type="submit" value="Ajouter un ou plusieurs film.s">
       </form>
       </div>
     </div>

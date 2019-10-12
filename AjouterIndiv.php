@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css.css">
-    <title>Ajout films</title>
+    <title>Ajout individu.s</title>
   </head>
   <body>
     <!-- Haut de la page -->
@@ -30,7 +30,7 @@
         array(
             "name" => "Nom",
             "type" => "text",
-            "exemple" => "HNom",
+            "exemple" =>"Nom",
             "text" => "Nom de l'individu ",),
         array(
             "name" => "Prenom",
@@ -72,7 +72,7 @@
 
 // Affichage d'une question de type text
 function question_text($q){
-    echo $q['text'] ."<br/><input type='text' name='$q[name]' autocomplete ='off' placeholder='$q[exemple]'><br/>";
+    echo $q['text'] ."<br/><input type='text' name='$q[name]' autocomplete ='off' placeholder='$q[exemple]' required><br/>";
 }
 
 function question_radiobutton($q){
@@ -87,7 +87,7 @@ function question_radiobutton($q){
 }
 
 function question_date($q){
-    echo $q['text'] ."<br/><input type='date' name ='$q[name]'> <br/>"; 
+    echo $q['text'] ."<br/><input type='date' name ='$q[name]' required> <br/>"; 
 }
 
 function question_listeDeroulante($q){
@@ -109,13 +109,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     // On présente les questions
     echo "<fieldset>
     <legend>Ajout film informations</legend>";
-    echo "<form method='POST' action='AjouterIndiv.php' autocomplete = 'on' ><ol>";
+    echo "<form method='POST' action='accueil.php'><ol>";
     foreach ($questions as $q){
         echo "<br/>";
         $question_handlers[$q['type']]($q);
     }
-    echo "</ol></fieldset><input type='submit' value='Valider Ajout'> <input type='submit' value='Ajouter un autre film'></form>";
+    echo "</ol></fieldset><input type='submit' name='Sub' value='Valider Ajout'> </form>";
 }
+ 
 
 ?>
     </div>

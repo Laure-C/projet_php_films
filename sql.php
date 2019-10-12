@@ -48,5 +48,25 @@ function nationnalites(){
     return $query;
 }
 
+function maxIdIndiv(){
+    $connexion = connexion();
+    $sql = "SELECT max(code_indiv) as max from individus";
+    $query = $connexion->query($sql);
+    return $query;
+}
+
+function maxIdFilm(){
+    $connexion = connexion();
+    $sql = "SELECT max(code_indiv) as max from films";
+    $query = $connexion->query($sql);
+    return $query;
+}
+
+function trouverIdIndividu($nom,$prenom){
+    $connexion = connexion();
+    $sql = "SELECT code_indiv from films natural join individus where nom = $nom and prenom = $prenom  group by code_indiv";
+    $query = $connexion->query($sql);
+    return $query;
+}
 
 ?>
