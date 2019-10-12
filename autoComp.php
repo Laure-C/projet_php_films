@@ -1,7 +1,7 @@
 <?php
 // p = pays, n = nationnalité, r = réalisateur
-function auto_compilation($choix){
-	require('connect.php');
+function auto_completion($choix, $listeElements){
+
 	$pdo = connect_bd();
 	if ($choix == 'p'){
 		$keyword = '%'.$_POST['Pays'].'%';

@@ -1,4 +1,4 @@
-<?php
+s<?php
 
 // define('USER',"chatenet");
 // define('PASSWD',"chatenet");
@@ -9,7 +9,8 @@
 
 function connexion(){
     try{
-        $connexion = new PDO('mysql:host=servinfo-mariadb;dbname=DBchatenet;charset=utf8','chatenet','chatenet');
+        //$connexion = new PDO('mysql:host=servinfo-mariadb;dbname=DBchatenet;charset=utf8','chatenet','chatenet');
+        $connexion = new PDO('mysql:host=localhost;dbname=DBchatenet;charset=utf8','root','');
         return $connexion;
         }
     catch(PDOException $e){
@@ -25,4 +26,12 @@ function genres(){
     $query = $connexion->query($sql);
     return $query;
 }
+
+function pays(){
+    $connexion = connexion();
+    $sql = "SELECT pays FROM films ORDER BY pays ";
+    $query = $connexion->query($sql);
+    return $query;
+}
+
 ?>

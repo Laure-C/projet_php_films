@@ -2,16 +2,17 @@
 <html lang="fr" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Accueil</title>
+    <link rel="stylesheet" href="css.css">
+    <title>Ajout films</title>
   </head>
   <body>
     <!-- Haut de la page -->
     <div class="haut">
-      <div class="hauthaut">
-        <img src="" alt="">
-        <p>Voir film</p>
-        <p>Gérer/Ajouter</p>
-        <p>Plus d'informations</p>
+    <div class="hauthaut">
+        <img src="https://media.gettyimages.com/photos/idyllic-home-with-covered-porch-picture-id479767332?s=612x612" alt="home">
+        <a href="voirFilm.php"><p >Voir film</p></a>
+        <a href="Gerer.php" class="pageactive" ><p>Gérer/Ajouter</p></a>
+        <a href="plusInformations.html"><p>Plus d'informations</p></a>
       </div>
       <div class="hautbas">
         <h1>Ajouter un ou plusieurs film.s</h1>
@@ -42,17 +43,17 @@
             "text" => "Genre du film ",
         ),
 
-        // array(
-        //     "name" => "Pays",
-        //     "type" => "text-autoCompil",
-        //     "text" => "Pays ",
-        // ),
+        array(
+            "name" => "Pays",
+            "type" => "text-autoCompletion",
+            "text" => "Pays ",
+        ),
 
-        // array(
-        //     "name" => "Realisateur",
-        //     "type" => "text-autoCompil",
-        //     "text" => "Réalisateur.rice ",
-        // ),
+        array(
+            "name" => "Realisateur",
+            "type" => "text-autoCompletion",
+            "text" => "Réalisateur.rice ",
+        ),
 
         array(
             "name" => "Duree",
@@ -70,26 +71,28 @@
 
 // Affichage d'une question de type text
 function question_text($q){
-    echo $q['text'] ."<br/><input type='text' name='$q[name]'><br/>";
+    echo $q['text'] ."<br/><input type='text' name='$q[name]' autocomplete ='off'><br/>";
 }
 
 
-function question_autoCompil($q){
-    if ($q['name']=="Pays"){    
-        echo $q['text'] .auto_compilation('p');
-    }
-
-    if ($q['name']=="Nationnalite"){
-        echo $q['text'] .auto_compilation('n');
-    }
-    // else{
-    //     echo $q['text'] .auto_compilation('r');
+function question_autoCompl($q){
+    // if ($q['name']=="Pays"){    
+    //     echo $q['text'] .auto_completion('p');
     // }
+
+    // if ($q['name']=="Nationnalite"){
+    //     echo $q['text'] .auto_completion('n');
+    // }
+    // else{
+    //     echo $q['text'] .auto_completion('r');
+    // }
+    echo $q['text'] . "<input type='text' name='f$q[name]'><br/>";
 
 }
 
 function question_duree($q){
-    echo $q['text'] ."<br/><input type='range' id='rangeDuree' name='rangeDuree' min='30' max='300' value='130' step='2' onchange='updateTextInput(this.value);'> <br/>"; 
+    echo $q['text'] ."<br/><input type='range' id='rangeDuree' name='rangeDuree' min='30' max='300' value='130' step='1' oninput='result.value=parseInt(rangeDuree.value)' autocomplete='off'/>
+        <output name='result'>130</output> <br/>"; 
 }
 
 function question_listeDeroulante($q){
@@ -102,7 +105,7 @@ function question_listeDeroulante($q){
 $question_handlers = array(
     "text" => "question_text",
     "listeDeroulante" => "question_listeDeroulante",
-    // "text-autoCompil"  => "question_autoCompil",
+    "text-autoCompletion"  => "question_autoCompl",
     "duree" => "question_duree"
 );
 
@@ -110,13 +113,13 @@ $question_handlers = array(
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     // On présente les questions
     echo "<fieldset>
-    <legend>Ajout film informations</legend><br/>";
-    echo "<form method='POST' action='AjouterFilm.php'><ol>";
+    <legend>Ajout film informations</legend>";
+    echo "<form method='POST' action='AjouterFilm.php' autocomplete = 'on' ><ol>";
     foreach ($questions as $q){
         echo "<br/>";
         $question_handlers[$q['type']]($q);
     }
-    echo "</ol><input type='submit' value='Valider Ajout'></form><fieldset>";
+    echo "</ol></fieldset><input type='submit' value='Valider Ajout'> <input type='submit' value='Ajouter un autre film'></form>";
 }
 
 ?>
