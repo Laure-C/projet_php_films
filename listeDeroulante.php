@@ -1,14 +1,14 @@
 <?php 
 
-function listeDeroulante($listElem){
+function listeDeroulante($listElem,$name,$val_Voulue){
 $cpt = 1;
-    echo '<select name="genre" autocomplete = "off"> <br/><br/>';
+    echo '<select name=$name autocomplete = "off"> <br/><br/>';
 	foreach ($listElem as $rs){
         if ($cpt == 1){
-            echo '<option value=$cpt selected="selected">'.$rs['nom_genre'].'</option><br/>';
+            echo '<option value=$cpt selected="selected">'.$rs[$val_Voulue].'</option><br/>';
             $cpt ++;
         }           
-        echo '<option value=$cpt >'.$rs['nom_genre'].'</option><br/>';
+        echo '<option value=$cpt >'.$rs[$val_Voulue].'</option><br/>';
 
 
     }

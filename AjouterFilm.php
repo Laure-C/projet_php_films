@@ -27,66 +27,53 @@
 
     $questions=[
         array(
-            "name" => "Nom",
+            "name" => "titre Orginal",
             "type" => "text",
-            "text" => "Titre du film original ",
-        ),
+            "exemple" => "Harry Potter and the Goblet of Fire",
+            "text" => "Titre du film original ",),
         array(
-            "name" => "Prenom",
+            "name" => "titre Francais",
             "type" => "text",
-            "text" => "Titre du film en français ",
-        ),
+            "exemple" => "Harry Potter et la coupe de feu",
+            "text" => "Titre du film en français ",),
 
         array(
             "name" => "Genre",
             "type" => "listeDeroulante",
-            "text" => "Genre du film ",
-        ),
+            "text" => "Genre du film ",),
 
         array(
             "name" => "Pays",
+            "exemple" => "Angleterre",
             "type" => "text-autoCompletion",
-            "text" => "Pays ",
-        ),
+            "text" => "Pays ",),
 
         array(
             "name" => "Realisateur",
+            "exemple" => "Mike Leigh",
             "type" => "text-autoCompletion",
-            "text" => "Réalisateur.rice ",
-        ),
+            "text" => "Réalisateur.rice ",),
 
         array(
             "name" => "Duree",
             "type" => "duree",
-            "text" => "Durée en minute",
-        ),
+            "text" => "Durée en minute",),
 
         array(
             "name" => "Image",
+            "exemple" => "Lien URL",
             "type" => "text",
-            "text" => "Image",
-        )
-            ];
+            "text" => "Image",)];
 
 
 // Affichage d'une question de type text
 function question_text($q){
-    echo $q['text'] ."<br/><input type='text' name='$q[name]' autocomplete ='off'><br/>";
+    echo $q['text'] ."<br/><input type='text' name='$q[name]' autocomplete ='off' placeholder='$q[exemple]'><br/>";
 }
 
 
 function question_autoCompl($q){
-    // if ($q['name']=="Pays"){    
-    //     echo $q['text'] .auto_completion('p');
-    // }
-
-    // if ($q['name']=="Nationnalite"){
-    //     echo $q['text'] .auto_completion('n');
-    // }
-    // else{
-    //     echo $q['text'] .auto_completion('r');
-    // }
-    echo $q['text'] . "<input type='text' name='f$q[name]'><br/>";
+    echo $q['text'] ."<div class='auto' style='width:300px;'><input id='pays' type='text' name='$q[name]' placeholder='$q[exemple]'></div>";
 
 }
 
@@ -98,7 +85,7 @@ function question_duree($q){
 function question_listeDeroulante($q){
 
     echo $q['text'];
-    echo listeDeroulante(genres());
+    echo listeDeroulante(genres(),"genre",'nom_genre');
 }
 
 
@@ -124,7 +111,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 ?>
     </div>
-
-
+                                    
     </body>
 </html>

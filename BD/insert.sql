@@ -1,5 +1,5 @@
 INSERT INTO films (code_film, titre_original, titre_francais, pays, date, duree, couleur, realisateur, image) VALUES
-    (193, 'One, Two, Three                                   ', 'Un, deux, trois                                   ', 'USA                 ', 1961, 115, 'NB        ', 010, '1_2_3.gif           '),
+    (193, 'One, Two, Three                                   ', 'Un, deux, trois                                   ', 'USA                 ', 1961, 115, 'NB        ', 10, '1_2_3.gif           '),
     (190, 'Caro diario                                       ', 'Journal intime                                    ', 'Italie              ', 1994, 100, 'couleur   ', 394, 'journal_intime.gif  '),
     (328, 'Little Big Man                                    ', 'Little Big Man                                    ', 'USA                 ', 1970, 139, 'couleur   ', 607, 'little_big_man.jpg  '),
     (248, 'Blind Husbands                                    ', 'Maris aveugles                                    ', 'USA                 ', 1919, 068, 'NB        ', 279, 'maris_aveugles.jpg  '),
@@ -8,9 +8,13 @@ INSERT INTO films (code_film, titre_original, titre_francais, pays, date, duree,
 
 INSERT INTO individus (code_indiv, nom, prenom, nationalite, date_naiss, date_mort) VALUES
     (400, 'Cagney              ', 'James               ', 'américaine          ', 1899, 1986),
+    (10, 'Wilder              ', 'Billy               ', 'américaine          ', 1906, 2002),
+    (607, 'Penn                ', 'Arthur              ', 'américaine          ', 1922, 0),
+    (203, 'Spielberg           ', 'Steven              ', 'américaine          ', 1946, 0),
     (394, 'Moretti             ', 'Nanni               ', 'italienne           ', 1953, 0),
     (608, 'Hoffman             ', 'Dustin              ', 'américaine          ', 1937, 0),
     (370, 'Dunaway             ', 'Faye                ', 'américaine          ', 1941, 0),
+    (112, 'Hawks               ', 'Howard              ', 'américaine          ', 1896, 1977),
     (279, 'von Stroheim        ', 'Erich               ', 'autrichienne        ', 1885, 1957),
     (417, 'Dickinson           ', 'Angie               ', 'américaine          ', 1931, 0),
     (418, 'Nelson              ', 'Ricky               ', 'américaine          ', 1940, 0),

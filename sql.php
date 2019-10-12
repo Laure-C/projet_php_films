@@ -22,16 +22,31 @@ function connexion(){
 
 function genres(){
     $connexion = connexion();
-    $sql = "SELECT nom_genre FROM genres ORDER BY nom_genre ";
+    $sql = "SELECT nom_genre FROM genres GROUP BY nom_genre";
+    $query = $connexion->query($sql);
+    return $query;
+}
+
+function realisateur(){
+    $connexion = connexion();
+    $sql = "SELECT prenom,nom from individus natural join films where code_indiv in (select realisateur from films) group by prenom,nom";
     $query = $connexion->query($sql);
     return $query;
 }
 
 function pays(){
     $connexion = connexion();
-    $sql = "SELECT pays FROM films ORDER BY pays ";
+    $sql = "SELECT pays FROM films GROUP BY pays";
     $query = $connexion->query($sql);
     return $query;
 }
+
+function nationnalites(){
+    $connexion = connexion();
+    $sql = "SELECT nationalite FROM individus GROUP BY nationalite";
+    $query = $connexion->query($sql);
+    return $query;
+}
+
 
 ?>
