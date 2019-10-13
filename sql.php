@@ -1,4 +1,4 @@
-s<?php
+<?php
 
 // define('USER',"chatenet");
 // define('PASSWD',"chatenet");
@@ -23,6 +23,13 @@ function connexion(){
 function genres(){
     $connexion = connexion();
     $sql = "SELECT nom_genre FROM genres GROUP BY nom_genre";
+    $query = $connexion->query($sql);
+    return $query;
+}
+
+function genresD(){
+    $connexion = connexion();
+    $sql = "SELECT nom_genre, code_genre FROM genres GROUP BY code_genre, nom_genre";
     $query = $connexion->query($sql);
     return $query;
 }
@@ -62,11 +69,58 @@ function maxIdFilm(){
     return $query;
 }
 
+function maxIdGenre(){
+    $connexion = connexion();
+    $sql = "SELECT max(code_genre) as max from genres";
+    $query = $connexion->query($sql);
+    return $query;
+}
+
+function trouverIdGenre($nom){
+    $connexion = connexion();
+    $sql = "SELECT code_genre from genres where nom_genre = $nom ";
+    $query = $connexion->query($sql);
+    return $query;
+}
+
 function trouverIdIndividu($nom,$prenom){
     $connexion = connexion();
     $sql = "SELECT code_indiv from films natural join individus where nom = $nom and prenom = $prenom  group by code_indiv";
     $query = $connexion->query($sql);
     return $query;
 }
+
+function insertValFilm($titre_org,$titre_fr,$realisateur,$image,$couleur,$pays,$duree,$date){
+    $connexion = connexion();
+    $Id= maxIdFilm()+1;
+    $realisateur = trouverIdIndividu($realisateur['nom'],$realisateur['prenom']);
+    $sql = $connexion()->prepare('INSERT INTO films(code_indiv,titre_orginal,titre_francais,pays,date1,duree,couleur,realisateur,image) VALUES(:Id,:titre_org,:titre_fr,:pays,:date1,:duree,:couleur,:realisateur,:image)');
+    $sql->execute(array(
+    'Id' => $Id,
+    'titre_org' => $titre_org,
+    'titre_fr' => $titre_fr,
+    'pays' => $pays,
+    'date1' => $date1,
+    'duree' => $duree,
+    'couleur' => $couleur,
+    'realisateur' => $realisateur,
+    'image' => $image
+    ));
+    // close();
+
+    }
+function insertValGenreFilm($genre){
+    $connexion = connexion();
+    $Id= maxIdFilm();
+    $genre = trouverIdGenre($genre);
+    $sql = $connexion()-> prepare('INSERT INTO classificaiton(ref_code_film,ref_code_genre) VALUES(:Id,:genre)');
+    $sql->execute(array(
+    'Id' => $Id,
+    'genre' => $genre
+    ));
+    // close();
+
+}
+
 
 ?>

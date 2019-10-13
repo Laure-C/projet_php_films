@@ -16,7 +16,7 @@
       </div>
 
       <div class="hautbas">
-        <h1>Ajouter un ou plusieurs individu.s</h1>
+        <h1>Ajouter un individu</h1>
       </div>
     </div>
 
