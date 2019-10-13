@@ -35,7 +35,7 @@
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     // On présente les questions\
-    echo '<fieldset><legend>Ajout un genre </legend>';
+    echo '<div class="Formulaire"><h2>Ajout un genre </h2>';
     echo "<form method='POST' action='AjouterGenre.php'><ol>";
     foreach ($questions as $q){
         echo "<br/>";
@@ -46,19 +46,19 @@
     echo "<br/>";
     echo '<table>';
         echo '<tr>';
-            echo '<td class="rowtitle">Code genre</td>';
-            echo '<td class="rowtitle">Nom du genre</td>';
+            echo '<th>Code genre</th>';
+            echo '<th class="rowtitle">Nom du genre</th>';
         echo '</tr>';
         $genreD= genresD();
         while($donnees = $genreD->fetch()){
           echo '<tr>';
-          echo '<td>';echo $donnees['code_genre'];echo '</td>';
-          echo '<td>';echo $donnees['nom_genre'];echo '</td>';
+          echo '<td class="fill">';echo $donnees['code_genre'];echo '</td>';
+          echo '<td class="fill">';echo $donnees['nom_genre'];echo '</td>';
           echo '</tr>';
               }
     echo '</table>';
            
-    echo "</ol></fieldset><input type='submit' name ='submit' value='Valider Ajout'> </form>";}
+    echo "</ol><input type='submit' name ='submit' value='Valider Ajout'> </form> </div>";}
 
     ?>
     </div>

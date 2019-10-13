@@ -95,40 +95,11 @@ a{
   align-items: center;
   color: white;
 }
-/*.f{
-}*/
+
 .filtres{
   grid-template-columns: 50% 50%;
 }
 
-
-table {
-border-collapse:collapse;
-width:100%;
-max-width:700px;
-min-width:400px;
-margin: auto;
-text-align:center;
-font-size: smaller;
-}
-
-
-table,th, td {
-border: 1px solid gray;
-}
-
-th, td {
-height: 24px;
-padding:4px;
-vertical-align:middle;
-}
-
-
-.rowtitle {
-background: orange;
-font-weight:bold;
-color : #fff;
-}
 
 .Formulaire{
   font-family: 'Open Sans Condensed', arial, sans;
@@ -165,12 +136,12 @@ color : #fff;
   outline: none;
   display: block;
   width: 100%;
-  padding: 7px;
+  padding: 6px;
   border: none;
   border-bottom: 1px solid #ddd;
   background: transparent;
   margin-bottom: 10px;
-  font: 12px Arial, Helvetica, sans-serif;
+  font: 14px Arial, Helvetica, sans-serif;
   height: 45px;
 }
 
@@ -251,6 +222,76 @@ color : #fff;
   font-family: Arial;
   font-weight: 900;
   font-style: normal;}
+
+
+
+
+
+table{
+  background: white;
+  border-radius:3px;
+  border-collapse: collapse;
+  height: 320px;
+  margin: auto;
+  max-width: 600px;
+  padding:5px;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+  border-bottom: 1px solid #C1C3D1;
+}
+
+
+th {
+  color:#D5DDE5;;
+  background:#1b1e24;
+  border-bottom:4px solid #9ea7af;
+  border-right: 1px solid #343a45;
+  font-size:15px;
+  font-weight: 100;
+  padding:20px;
+  text-align:left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align:middle;
+}
+
+  
+tr {
+  border-top: 1px solid #C1C3D1;
+  border-bottom-: 1px solid #C1C3D1;
+  color:#666B85;
+  font-size:16px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+ 
+tr:hover td {
+  background:#4E5066;
+  color:#FFFFFF;
+  border-top: 1px solid #22262e;
+}
+ 
+tr:nth-child(odd) td {
+  background:#EBEBEB;
+}
+ 
+tr:nth-child(odd):hover td {
+  background:#4E5066;
+}
+
+td {
+  background:#FFFFFF;
+  padding:20px;
+  text-align:left;
+  vertical-align:middle;
+  font-weight:300;
+  font-size:13px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #C1C3D1;
+  border-left: 1px solid #C1C3D1;
+}
+
+
 
 </style>
 }
