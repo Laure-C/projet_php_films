@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS films (
   titre_original varchar(50) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   titre_francais varchar(50) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   pays varchar(20) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
-  date int(11) DEFAULT NULL,
+  date1 int(11) DEFAULT NULL,
   duree int(11) DEFAULT NULL,
   couleur varchar(10) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   realisateur int(11) DEFAULT NULL,

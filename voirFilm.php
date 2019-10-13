@@ -9,7 +9,7 @@
     <!-- Haut de la page -->
     <div class="haut">
       <div class="hauthaut">
-        <a href="accueil.php"><img class="pageactive" src="https://media.gettyimages.com/photos/idyllic-home-with-covered-porch-picture-id479767332?s=612x612" alt="home"></a>
+        <a href="accueil.php"><img src="https://www.pinclipart.com/picdir/big/178-1785162_white-home-icon-png-vector-royalty-free-download.png" alt="home"></a>
         <p class="pageactive">Voir film</p>
         <a href="Gerer.php"><p>Gérer/Ajouter</p></a>
         <a href="plusInformations.html"><p>Plus d'informations</p></a>

@@ -1,3 +1,14 @@
+a{
+  display: block;
+  margin : auto;
+  text-align: center;
+}
+
+.choisir{
+  margin-top: 5%;
+  text-align: center;
+}
+
 body{
   background-color: azure;
   font-size: 1.5em;
@@ -7,24 +18,43 @@ body{
   height: 100%;
 }
 
-input[type=button], input[type=submit]{
-  border:none;
-  padding:6px 0 6px 0;
-  border-radius:8px;
-  background:orange;
-  font:bold 13px Arial;
-  color:#fff;
+.GererSub{
+  box-shadow: 0px 10px 14px -7px #804d17;
+  background:linear-gradient(to bottom, #ff6c0a 5%, #e69812 100%);
+  background-color:#ff6c0a;
+  border-radius:4px;
+  border:1px solid #e69225;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Arial;
+  font-size:25px;
+  font-weight:bold;
+  padding:13px 76px;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #f09b09;
 }
 
+
+input[type=submit]:hover {
+  background:linear-gradient(to bottom, #e69812 5%, #ff6c0a 100%);
+  background-color:#e69812;
+}
+
+input[type=submit]:active {
+  position:relative;
+  top:1px;
+}
 h1{
-  font-size: 3em;
+  font-size: 2.6em;
   text-align: center;
 }
 h2{
   font-size: 1.25em;
 }
 img{
-  width: 4em;
+  margin-top: 1%;
+  width: 2em;
   background-image: white;
 }
 a{
@@ -41,7 +71,7 @@ a{
   background-color: menutext;
 }
 .hautbas{
-  padding: 1%;
+  padding: 0.1%;
   text-align: center;
   color: white;
   background-color: orange;
@@ -98,4 +128,129 @@ vertical-align:middle;
 background: orange;
 font-weight:bold;
 color : #fff;
+}
+
+.Formulaire{
+  font-family: 'Open Sans Condensed', arial, sans;
+  width: 500px;
+  padding: 30px;
+  background: #FFFFFF;
+  margin: 50px auto;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+  -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+  -webkit-box-shadow:  0px 0px 15px rgba(0, 0, 0, 0.22);
+}
+.Formulaire h2{
+  background: #4D4D4D;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: #BFB9B9;
+  font-size: 18px;
+  font-weight: 100;
+  font-weight: bold;
+  padding: 20px;
+  margin: -30px -30px 30px -30px;
+}
+
+.Formulaire input[type="text"],
+.Formulaire input[type="date"],
+.Formulaire input[type="number"],
+.Formulaire textarea,
+.Formulaire select 
+{
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: none;
+  display: block;
+  width: 100%;
+  padding: 7px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  background: transparent;
+  margin-bottom: 10px;
+  font: 12px Arial, Helvetica, sans-serif;
+  height: 45px;
+}
+
+.Formulaire input[type="submit"]:hover {
+  opacity: 0.7; 
+}
+
+.Formulaire input[type="radio"]{visibility: hidden;}
+
+.Formulaire input[type="radio"] + label {
+    color:grey;
+    font:16px Arial, Helvetica, sans-serif;;
+}
+
+.Formulaire input[type="radio"] + label span {
+    display:inline-block;
+    width:19px;
+    height:19px;
+    margin:-2px 10px 0 0;
+    vertical-align:middle;
+    background:url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/check_radio_sheet.png) -38px top no-repeat;
+    cursor:pointer;
+}
+
+.Formulaire input[type="radio"]:checked + label span {
+    background:url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/check_radio_sheet.png) -57px top no-repeat;
+}
+
+
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 75%; /* Full-width */
+  height: 10px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 15px; /* Set a specific slider handle width */
+  height: 15px; /* Slider handle height */
+  background: orange; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 19px; /* Set a specific slider handle width */
+  height: 19px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+
+.Formulaire input[type="submit"]{
+  backface-visibility: hidden;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  white-space: nowrap;
+  background: #e68028;
+  border-radius: 0px;
+  border: 0px solid #ad4b14;
+  border-width: 0px 0px 4px 0px;
+  padding: 10px 20px 10px 20px;
+    color: #fff;
+  font-size: initial;
+  font-family: Arial;
+  font-weight: 900;
+  font-style: normal;}
+
+</style>
 }

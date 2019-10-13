@@ -9,7 +9,7 @@
     <!-- Haut de la page -->
     <div class="haut">
     <div class="hauthaut">
-        <img src="https://media.gettyimages.com/photos/idyllic-home-with-covered-porch-picture-id479767332?s=612x612" alt="home">
+        <img src="https://www.pinclipart.com/picdir/big/178-1785162_white-home-icon-png-vector-royalty-free-download.png" alt="home">
         <a href="voirFilm.php"><p >Voir film</p></a>
         <a href="Gerer.php" class="pageactive" ><p>Gérer/Ajouter</p></a>
         <a href="plusInformations.html"><p>Plus d'informations</p></a>
@@ -52,7 +52,7 @@
         array(
             "name" => "DateMort",
             "type" => "date",
-            "text" => "Date de mort ",),
+            "text" => "Date de décès ",),
 
         array(
             "name" => "Acteur",
@@ -81,7 +81,7 @@ function question_radiobutton($q){
     foreach($q['choices'] as $c){
         $i += 1;
         $html .= "<input type='radio' name='$q[name]' value='$c[value]' id='$q[name]-$i'>";
-        $html .= "<label for='$q[name]-$i'>$c[text]</label>";
+        $html .= "<label for='$q[name]-$i'><span></span>$c[text]</label>";
     }
     echo $html;
 }
@@ -107,14 +107,13 @@ $question_handlers = array(
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     // On présente les questions
-    echo "<fieldset>
-    <legend>Ajout film informations</legend>";
+    echo '<div class="Formulaire"><h2>Ajout d\'informations sur un individu</h2>';
     echo "<form method='POST' action='accueil.php'><ol>";
     foreach ($questions as $q){
         echo "<br/>";
         $question_handlers[$q['type']]($q);
     }
-    echo "</ol></fieldset><input type='submit' name='Sub' value='Valider Ajout'> </form>";
+    echo "</ol><input type='submit' name='Sub' value='Valider Ajout'> </form>";
 }
  
 
