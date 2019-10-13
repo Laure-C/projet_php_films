@@ -17,90 +17,115 @@
       <div class="hautbas">
         <h1>Voir film</h1>
       </div>
+    </div>
 
-      <!-- Contenue -->
-      <div class="contenue">
-        <!-- GAUCHE -->
-        <div class="asideG">
-          <h2>Filtres</h2>
-          <div class="titreF">
-            <!-- Filtre Titre Original -->
-            <h2>Titre fr ou original</h2>
-            <div class="filtres">
-              <input type="checkbox" name="f1">
-              <p>Ordre alphabétique</p></div>
-            <div class="filtres">
-              <input type="checkbox" name="f2">
-              <p>Ordre inverse alphabétique</p></div>
-            <div class="filtres">
-              <input type="checkbox" name="f3">
-              <p>Commençant par la lettre</p></div>
-          </div>
-          <!-- Filtre Realisateur -->
-          <div class="realisateurF">
-            <h2>Réalisateur</h2>
-            <div class="filtres">
-              <input type="checkbox" name="f4">
-              <p>Ordre alphabétique</p></div>
-            <div class="filtres">
-              <input type="checkbox" name="f5">
-              <p>Ordre inverse alphabétique</p></div>
-            <div class="filtres">
-              <input type="checkbox" name="f6">
-              <p>Commençant par la lettre</p></div>
-          </div>
-          <!-- Filtre Genre -->
-          <div class="genreF">
-            <h2>Genre du film</h2>
-            <div class="filtres">
-              <input type="checkbox" name="f7">
-              <p>Liste les genres</p></div>
-          </div>
-          <!-- Filtre Pays -->
-          <div class="paysF">
-            <h2>Pays</h2>
-            <div class="filtres">
-              <input type="checkbox" name="f8">
-              <p>Ordre alphabétique</p></div>
-            <div class="filtres">
-              <input type="checkbox" name="f9">
-              <p>Ordre inverse alphabétique</p></div>
-          </div>
-          <!-- Filtre Couleur -->
-          <div class="couleur">
-            <h2>Couleur</h2>
-            <div class="filtres">
-              <input type="checkbox" name="f10">
-              <p>Noir et Blanc</p></div>
-            <div class="filtres">
-              <input type="checkbox" name="f11">
-              <p>Couleur</p></div>
-            <div class="filtres">
-              <input type="checkbox" name="f12">
-              <p>Les Deux</p></div>
-          </div>
-          <input type="button" name="filtrer">
-        </div>
+    <div class="main">
+    <?php
 
-        <!-- DROITE -->
-        <div class="asideD">
-          <div class="hautcontenue">
-            <input type="text" name="recheche">
-            <input type="button" name="Rechercher" value="">
-          </div>
-        </div>
-        <ul>
+    require('listeDeroulante.php');
+    require('sql.php');
+
+    $questions=[
 
 
-        <?php
-        // for ($i=0; $i < ; $i++) {
-        //     echo "<li>";
-        //
-        //     echo "</li>";
-        // }
+        array(
+            "name" => "Titre original",
+            "type" => "radiobutton",
+            "text" => "Titre original",
+            "choices" =>[
+              array(
+                "text" => "Ordre alphabétique",
+                "value" => "aph"),
+              array(
+                "text" => "Ordre inverse alphabétique",
+                "value" => "Non_aph"),
+              array(
+                "text" => "Comment par la lettre : ",
+                "value" => "lettre_deb")
 
-         ?>
-         </ul>
-      </div>
+            ]),
+        array(
+            "name" => "Titre français",
+            "type" => "radiobutton",
+            "text" => "Titre en français",
+            "choices" =>[
+              array(
+                "text" => "Ordre alphabétique",
+                "value" => "aph"),
+              array(
+                "text" => "Ordre inverse alphabétique",
+                "value" => "Non_aph"),
+              array(
+                "text" => "Comment par la lettre : ",
+                "value" => "lettre_deb")
+
+            ]),
+
+          array(
+            "name" => "Genre",
+            "type" => "listeDeroulante1",
+            "text" => "Genre du film ",),
+
+          array(
+            "name" => "Pays",
+            "type" => "listeDeroulante2",
+            "text" => "Pays ",),
+          
+          array(
+            "name" => "Realisateur",
+            "type" => "listeDeroulante3",
+            "text" => "Réalisateur.rice ",),
+
+          ];
+
+
+function question_listeDeroulante1($q){
+    echo $q['text'].'<br/>';
+    echo listeDeroulante(genres(),"genre",'nom_genre');
+}
+
+function question_listeDeroulante2($q){
+    echo $q['text'].'<br/>';
+    echo listeDeroulante(pays(),"pays",'pays');
+}
+
+function question_listeDeroulante3($q){
+    echo $q['text'].'<br/>';
+    echo listeDeroulante2(realisateur(),"real",'nom','prenom');
+}
+
+function question_radiobutton($q){
+    $html = $q['text'] . "<br/>";
+    $i = 0;
+    foreach($q['choices'] as $c){
+        $i += 1;
+        $html .= "<input type='radio' class='container' name='$q[name]' value='$c[value]' id='$q[name]-$i'>";
+        $html .= "<label for='$q[name]-$i'><span></span>$c[text]</label><br/>";
+    }
+    echo $html;
+}
+
+
+
+    $question_handlers = array(
+    "text" => "question_text",
+    "listeDeroulante1" => "question_listeDeroulante1",
+    "listeDeroulante2" => "question_listeDeroulante2",
+    "listeDeroulante3" => "question_listeDeroulante3",
+    "radiobutton"  => "question_radiobutton");
+
+
+    echo '<div class="asideG"><h3>Filtres</h2>';
+    echo "<form method='POST' action='voirFilm.php'><ol> ";
+    foreach ($questions as $q){
+        echo "<br/>";
+        $question_handlers[$q['type']]($q);
+    }
+    echo "</ol><input type='submit' name ='submit' value='Filtrer'> </form> </div>";
+
+
+?>
+
+</div>
   </body>
 </html>

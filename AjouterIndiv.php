@@ -9,7 +9,7 @@
     <!-- Haut de la page -->
     <div class="haut">
     <div class="hauthaut">
-        <img src="https://www.pinclipart.com/picdir/big/178-1785162_white-home-icon-png-vector-royalty-free-download.png" alt="home">
+        <a href="accueil.php"><img src="https://www.pinclipart.com/picdir/big/178-1785162_white-home-icon-png-vector-royalty-free-download.png" alt="home"></a>
         <a href="voirFilm.php"><p >Voir film</p></a>
         <a href="Gerer.php" class="pageactive" ><p>Gérer/Ajouter</p></a>
         <a href="plusInformations.html"><p>Plus d'informations</p></a>
@@ -23,7 +23,6 @@
     <div class = "main">
     <?php
     require('listeDeroulante.php');
-    require('autoComp.php');
     require('sql.php');
 
     $questions=[
@@ -47,7 +46,6 @@
             "name" => "DateNaissance",
             "type" => "date",
             "text" => "Date de naissance ",),
-
 
         array(
             "name" => "DateMort",

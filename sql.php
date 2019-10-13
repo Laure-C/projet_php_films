@@ -90,6 +90,24 @@ function trouverIdIndividu($nom,$prenom){
     return $query;
 }
 
+function filmsInfos(){
+    $connexion = connexion();
+    $sql = " SELECT titre_original,titre_francais,pays,date1,duree,couleur,nom_genre,nom,prenom,nationalite,date_naiss,date_mort FROM films natural join individus natural join classification natural join genres where ref_code_film = code_film and realisateur = code_indiv and ref_code_genre = code_genre group by titre_original,titre_francais";
+    $query = $connexion->query($sql);
+    return $query;
+}
+
+function filmsActeurs(){
+    $connexion = connexion();
+    $sql = " SELECT code_film,nom,prenom,nationalite,date_naiss,date_mort FROM films natural join acteurs natural join individus where ref_code_film = code_film and ref_code_acteur = code_indiv";
+    $query = $connexion->query($sql);
+    return $query;
+}
+
+function acteurs(){
+
+}
+
 function insertValFilm($titre_org,$titre_fr,$realisateur,$image,$couleur,$pays,$duree,$date){
     $connexion = connexion();
     $Id= maxIdFilm()+1;
