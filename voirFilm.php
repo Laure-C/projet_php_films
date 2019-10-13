@@ -124,7 +124,18 @@ function question_radiobutton($q){
     echo "</ol><input type='submit' name ='submit' value='Filtrer'> </form> </div>";
 
 
-?>
+echo'<div class ="asideD">';
+
+
+  $lesImages= images();
+  foreach ($lesImages as $im){
+    echo '<input type="image" src="'.$im["image"].'" alt="dksjf">';
+  }
+echo '</div>';
+
+  ?>
+
+
 
 </div>
   </body>

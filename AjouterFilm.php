@@ -172,8 +172,8 @@ echo "<script type='text/javascript'>alert('le film a été ajouté');</script>"
         $pays=$_POST['Pays'];
         $duree = $_POST['Duree'];
         $date=$_POST['Date'];
-        insertValFilm($titre_orig,$titre_fr,$realisateur,$image,$couleur,$pays,$duree,$date);
-        insertValGenreFilm($genre); 
+        // insertValFilm($titre_orig,$titre_fr,$realisateur,$image,$couleur,$pays,$duree,$date);
+        // insertValGenreFilm($genre); 
     }
 
 }

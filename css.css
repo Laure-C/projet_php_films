@@ -18,6 +18,7 @@ body{
   height: 100%;
 }
 
+
 .GererSub{
   box-shadow: 0px 10px 14px -7px #804d17;
   background:linear-gradient(to bottom, #ff6c0a 5%, #e69812 100%);
@@ -52,7 +53,7 @@ h1{
 h2{
   font-size: 1.25em;
 }
-img{
+.hauthaut img{
   margin-top: 50%;
   width: 2em;
   background-image: white;
@@ -86,6 +87,12 @@ a{
 }
 .bas{text-align: center;}
 
+
+.main{
+  display: flex;
+  align-items: stretch;
+}
+
 .asideG{
   background-color: menutext;
   width: 20%;
@@ -109,8 +116,30 @@ a{
   font-size: initial;
   font-family: Arial;
   font-weight: 900;
-  font-style: normal;}
+  font-style: normal;
+  margin-left: 60%;
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
+
+.asideD input[type="image"]{
+  height:500px;
+  margin:20px;
+
+}
+
+.asideD{
+  margin-left: : 50px;
+  float : right;
+  width: 70%;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+
+
+}
+
+
 /* CSS des filtres */
 
 

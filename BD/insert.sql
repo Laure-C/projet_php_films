@@ -1,10 +1,10 @@
 INSERT INTO films (code_film, titre_original, titre_francais, pays, date1, duree, couleur, realisateur, image) VALUES
-    (193, 'One, Two, Three                                   ', 'Un, deux, trois                                   ', 'USA                 ', 1961, 115, 'NB        ', 10, '1_2_3.gif           '),
-    (190, 'Caro diario                                       ', 'Journal intime                                    ', 'Italie              ', 1994, 100, 'couleur   ', 394, 'journal_intime.gif  '),
-    (328, 'Little Big Man                                    ', 'Little Big Man                                    ', 'USA                 ', 1970, 139, 'couleur   ', 607, 'little_big_man.jpg  '),
-    (248, 'Blind Husbands                                    ', 'Maris aveugles                                    ', 'USA                 ', 1919, 068, 'NB        ', 279, 'maris_aveugles.jpg  '),
-    (530, 'E.T.: The Extra-Terrestrial                       ', 'E.T. : L Extra-Terrestre                         ', 'USA                 ', 1982, 115, 'couleur   ', 203, 'E_T.jpeg            '),
-    (202, 'Rio Bravo                                         ', 'Rio Bravo                                         ', 'USA                 ', 1959, 141, 'couleur   ', 112, 'rio_bravo.gif       ');
+    (193, 'One, Two, Three                                   ', 'Un, deux, trois                                   ', 'USA                 ', 1961, 115, 'NB        ', 10,  'https://images-eu.ssl-images-amazon.com/images/I/51oJUmKa0SL._SY300_QL70_.jpg'),
+    (190, 'Caro diario                                       ', 'Journal intime                                    ', 'Italie              ', 1994, 100, 'couleur   ', 394, 'https://cdn.cinematerial.com/p/500x/x2chly2s/caro-diario-canadian-movie-poster.jpg?v=1456418198'),
+    (328, 'Little Big Man                                    ', 'Little Big Man                                    ', 'USA                 ', 1970, 139, 'couleur   ', 607, 'http://t3.gstatic.com/images?q=tbn:ANd9GcTek_Xu2yyDJnmQMB92GMZSnsk9i02VII2iNaLz_oPJw4O00UAY'),
+    (248, 'Blind Husbands                                    ', 'Maris aveugles                                    ', 'USA                 ', 1919, 068, 'NB        ', 279, 'https://upload.wikimedia.org/wikipedia/commons/2/24/Blind_Husbands_Film_Daily_1919.png'),
+    (530, 'E.T.: The Extra-Terrestrial                       ', 'E.T. : L Extra-Terrestre                         ', 'USA                 ', 1982, 115, 'couleur   ', 203,  'http://fr.web.img5.acsta.net/c_215_290/medias/nmedia/00/02/36/52/affet.jpg'),
+    (202, 'Rio Bravo                                         ', 'Rio Bravo                                         ', 'USA                 ', 1959, 141, 'couleur   ', 112, 'http://fr.web.img6.acsta.net/c_215_290/medias/nmedia/00/02/56/76/aff.jpg');
 
 INSERT INTO individus (code_indiv, nom, prenom, nationalite, date_naiss, date_mort) VALUES
     (400, 'Cagney              ', 'James               ', 'américaine          ', 1899, 1986),
