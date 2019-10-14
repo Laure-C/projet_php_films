@@ -10,9 +10,9 @@
     <!-- Haut de la page -->
     <div class="haut">
       <div class="hauthaut">
-        <a href="accueil.html"><img src="https://icon-library.net/images/home-logo-icon/home-logo-icon-0.jpg" alt="home"></a>
+        <a href="accueil.php"><img src="https://icon-library.net/images/home-logo-icon/home-logo-icon-0.jpg" alt="home"></a>
         <p class="voirp">Voir film</p>
-        <a href="Gerer.html" class="gererp"><p>Gérer/Ajouter</p></a>
+        <a href="Gerer.php" class="gererp"><p>Gérer/Ajouter</p></a>
         <a href="plusInformations.html" class="plusp"><p>Plus d'informations</p></a>
       </div>
       <div class="hautbas">

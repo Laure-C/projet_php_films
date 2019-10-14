@@ -11,8 +11,8 @@
     <div class="haut">
       <div class="hauthaut">
         <img src="https://icon-library.net/images/home-logo-icon/home-logo-icon-0.jpg" alt="home">
-        <a href="voirFilm.html" class="voirp"><p>Voir film</p></a>
-        <a href="Gerer.html" class="gererp"><p>Gérer/Ajouter</p></a>
+        <a href="voirFilm.php" class="voirp"><p>Voir film</p></a>
+        <a href="Gerer.php" class="gererp"><p>Gérer/Ajouter</p></a>
         <a href="plusInformations.html" class="plusp"><p>Plus d'informations</p></a>
       </div>
       <div class="hautbas">
