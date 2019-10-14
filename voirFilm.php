@@ -3,16 +3,17 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css.css">
+    <link rel="stylesheet" href="voirpcss.css">
     <title>Voir films</title>
   </head>
   <body>
     <!-- Haut de la page -->
     <div class="haut">
       <div class="hauthaut">
-        <a href="accueil.php"><img src="https://www.pinclipart.com/picdir/big/178-1785162_white-home-icon-png-vector-royalty-free-download.png" alt="home"></a>
-        <p class="pageactive">Voir film</p>
-        <a href="Gerer.php"><p>Gérer/Ajouter</p></a>
-        <a href="plusInformations.html"><p>Plus d'informations</p></a>
+        <a href="accueil.html"><img src="https://icon-library.net/images/home-logo-icon/home-logo-icon-0.jpg" alt="home"></a>
+        <p class="voirp">Voir film</p>
+        <a href="Gerer.html" class="gererp"><p>Gérer/Ajouter</p></a>
+        <a href="plusInformations.html" class="plusp"><p>Plus d'informations</p></a>
       </div>
       <div class="hautbas">
         <h1>Voir film</h1>
@@ -70,7 +71,7 @@
             "name" => "Pays",
             "type" => "listeDeroulante2",
             "text" => "Pays ",),
-          
+
           array(
             "name" => "Realisateur",
             "type" => "listeDeroulante3",
