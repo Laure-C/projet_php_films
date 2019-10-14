@@ -21,7 +21,33 @@
 
       <!-- Contenue -->
       <div class="contenue">
-      <p>film</p>
+      <?php
+
+      require('sql.php');
+
+      $idF=$_GET['ID'];
+      $film=filmsInfos2($idF);
+
+      function infosFilms($f){
+        foreach($f as $ff){
+        echo "<h1>".$ff['titre_original']."</h1>";
+        echo "<h2>".$ff['titre_francais']."</h2>";
+        echo "<div class='film'><input type='image' src=".$ff['image']." alt='image'>";
+        echo "<p>Film : ".$ff['date1']."</p>";
+        echo "<p>Produit au/à ".$ff['pays']."</p>";
+        echo "<p>Durée : ".$ff['duree']."</p>";
+        echo "<p>Genre du film : ".$ff['nom_genre']."</p>";
+        echo "<p>Film réalisé en ".$ff['couleur']."</p></div>";
+        
+        if ($ff['date_mort']!=0){
+          echo "<div class='realisateur'><h2>Réalisateur</h2><p>Réalisé par ".$ff['nom']." ".$ff['prenom']." (".$ff['date_naiss']."-".$ff['date_mort'].") </p>";
+        }
+        else{echo "<div class='realisateur'><h2>Réalisateur</h2><p>Réalisé par ".$ff['nom']." ".$ff['prenom']." (".$ff['date_naiss'].")</p>";}
+        echo "<p> Nationnalité : ".$ff['nationalite']."</p></div>";
+      }
+      }
+      infosFilms($film);
+      ?>
       <div>
   </body>
 </html>

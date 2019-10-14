@@ -2,8 +2,8 @@
 
 function connexion(){
     try{
-        $connexion = new PDO('mysql:host=servinfo-mariadb;dbname=DBdecaux;charset=utf8','decaux','decaux');
-        // $connexion = new PDO('mysql:host=localhost;dbname=DBchatenet;charset=utf8','root','');
+        // $connexion = new PDO('mysql:host=servinfo-mariadb;dbname=DBdecaux;charset=utf8','decaux','decaux');
+        $connexion = new PDO('mysql:host=localhost;dbname=DBchatenet;charset=utf8','root','');
         return $connexion;
         }
     catch(PDOException $e){
@@ -13,7 +13,7 @@ function connexion(){
 
 function images(){
     $connexion = connexion();
-    $sql = "SELECT titre_francais,image FROM films order by titre_francais";
+    $sql = "SELECT code_film,image FROM films order by titre_francais";
     $query = $connexion->query($sql);
     $connexion = NULL;
     return $query;
@@ -112,6 +112,14 @@ function filmsInfos(){
     return $query;
 }
 
+function filmsInfos2($id){
+    $connexion = connexion();
+    $sql = " SELECT titre_original,titre_francais,pays,date1,duree,couleur,nom_genre,nom,prenom,nationalite,date_naiss,date_mort,image FROM films natural join individus natural join classification natural join genres where ref_code_film = code_film and realisateur = code_indiv and ref_code_genre = code_genre and code_film=$id"; 
+    $query = connexion()->query($sql);
+    $connexion = NULL;
+    return $query;
+}
+
 function filmsActeurs(){
     $connexion = connexion();
     $sql = " SELECT code_film,nom,prenom,nationalite,date_naiss,date_mort FROM films natural join acteurs natural join individus where ref_code_film = code_film and ref_code_acteur = code_indiv";
@@ -120,6 +128,13 @@ function filmsActeurs(){
     return $query;
 }
 
+function rechercheImages($t){
+    $connexion = connexion();
+    $sql = "SELECT code_film,image FROM films where titre_original like '$t%' order by titre_francais";
+    $query = $connexion->query($sql);
+    $connexion = NULL;
+    return $query;
+}
 
 
 function insertValFilm($titre_org,$titre_fr,$realisateur,$image,$couleur,$pays,$duree,$date){

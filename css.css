@@ -147,9 +147,14 @@ a:hover{
   display: flex;
 }
 .recherche{
-  width: 600px;
+  margin-left: 10px;
+  width: 89%;
 }
-.brecherche{background: "https://cdn.pixabay.com/photo/2014/04/02/10/18/magnifying-glass-303408_960_720.png";}
+.brecherche{
+  background: "https://cdn.pixabay.com/photo/2014/04/02/10/18/magnifying-glass-303408_960_720.png";
+  padding-right: 2%;
+  padding-left: 2%;
+}
 /* CSS GERER */
 .choisir{
   margin-top: 5%;
@@ -358,4 +363,23 @@ td {
   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
   border-right: 1px solid #C1C3D1;
   border-left: 1px solid #C1C3D1;
+}
+
+/* CSS consulter */
+.film{
+  display:grid;
+}
+.film input{
+  text-align: center;
+  grid-column:2 / 3 ;
+  grid-row: 1 / 5;
+  height: 500px;
+}
+.film p{
+  grid-column:4; 
+}
+.realisateur{
+ border-width:1px;
+ border-style:double;
+ border-color:black;
 }
