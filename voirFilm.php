@@ -129,8 +129,9 @@ echo'<div class ="asideD">';
 
 
   $lesImages= images();
+  // echo '<form action="consulterFilm.php" method="post">'
   foreach ($lesImages as $im){
-    echo '<input type="image" src="'.$im["image"].'" alt="dksjf">';
+    echo '<a href="consulterFilm.php"><input type="image" src="'.$im["image"].'" alt="image"></a>';
   }
 echo '</div>';
 
