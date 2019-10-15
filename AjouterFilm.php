@@ -20,12 +20,12 @@
         array(
             "name" => "titreOriginal",
             "type" => "text",
-            "exemple" => "Harry Potter and the Goblet of Fire",
+            "exemple" => 'Harry Potter and the Goblet of Fire',
             "text" => "Titre du film original ",),
         array(
             "name" => "titreFrancais",
             "type" => "text",
-            "exemple" => "Harry Potter et la coupe de feu",
+            "exemple" => 'Harry Potter et la coupe de feu',
             "text" => "Titre du film en français ",),
 
         array(
@@ -81,33 +81,34 @@
 
 // Affichage d'une question de type text
 function question_text($q){
-    echo $q['text'] ."<br/><input type='text' name='$q[name]' id='$q[name]' autocomplete ='off' placeholder='$q[exemple]' required><br/>";
+
+    echo $q["text"] ."<br/><input type='text' name=".$q["name"]."id=".$q["name"]." autocomplete ='off' placeholder='$q[exemple]' required><br/>";
 }
 
 
 function question_autoCompl($q){
-    echo $q['text'] ."<div class='auto' style='width:300px;'><input id='pays' type='text' name='$q[name]' id='$q[name]' placeholder='$q[exemple]' required></div>";
+    echo $q["text"] ."<div class='auto' style='width:300px;'><input id='pays' type='text' name=".$q["name"]." id=".$q["name"]." placeholder='$q[exemple]' required></div>";
 
 }
 
 function question_duree($q){
-    echo $q['text'] ."<br/><input type='range' class='slider' name='$q[name]' id='$q[name]' min='30' max='300' value='130' step='1' oninput='result.value=parseInt($q[name].value)' autocomplete='off'>
+    echo $q["text"] ."<br/><input type='range' class='slider' name=".$q["name"]." id=".$q["name"]." min='30' max='300' value='130' step='1' oninput='result.value=parseInt(".$q["name"].".value)' autocomplete='off'>
         <output name='result'>130</output> <br/>";
 }
 
 function question_listeDeroulante1($q){
-    echo $q['text'].'<br/>';
+    echo $q["text"].'<br/>';
     echo listeDeroulante(genres(),"genre",'nom_genre');
 }
 
 
 function question_radiobutton($q){
-    $html = $q['text'] . "<br/>";
+    $html = $q["text"] . "<br/>";
     $i = 0;
-    foreach($q['choices'] as $c){
+    foreach($q["choices"] as $c){
         $i += 1;
-        $html .= "<input type='radio' class='container' name='$q[name]' value='$c[value]' id='$q[name]-$i'>";
-        $html .= "<label for='$q[name]-$i'><span></span>$c[text]</label><br/>";
+        $html .= "<input type='radio' class='container' name=".$q["name"]." value=".$c["value"]." id=".$q["name"]."-$i>";
+        $html .= "<label for=".$q["name"]."-$i><span></span>".$c["text"]."</label><br/>";
     }
     echo $html;
     echo "<br> <p>* NB = noir et blanc</p>";
@@ -120,12 +121,12 @@ function question_listeDeroulante2($q){
 }
 
 function question_date($q){
-    echo $q['text'] ."<br/><input type='number' name='$q[name]' value='2000' min='1800' max='2100'><br/>";
+    echo $q['text'] ."<br/><input type='number' name=".$q["name"]." value='2000' min='1800' max='2100'><br/>";
 }
 
 
 function question_listeDeroulante3($q){
-    echo $q['text'].'<br/>';
+    echo $q["text"].'<br/>';
     echo listeDeroulante2(realisateur(),"real",'nom','prenom');
 }
 
@@ -147,7 +148,7 @@ $question_handlers = array(
     echo "<form method='POST' action='AjouterFilmRep.php'><ol> ";
     foreach ($questions as $q){
         echo "<br/>";
-        $question_handlers[$q['type']]($q);
+        $question_handlers[$q["type"]]($q);
     }
     echo "</ol><input type='submit' name ='submit' value='Valider Ajout'> </form> </div>";
 
