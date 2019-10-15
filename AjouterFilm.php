@@ -141,35 +141,16 @@ $question_handlers = array(
 );
 
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+
     // On présente les questions\
     echo '<div class="Formulaire"><h2>Ajout d\'informations sur film</h2>';
-    echo "<form method='POST' action='AjouterFilm.php'><ol> ";
+    echo "<form method='POST' action='AjouterFilmRep.php'><ol> ";
     foreach ($questions as $q){
         echo "<br/>";
         $question_handlers[$q['type']]($q);
     }
     echo "</ol><input type='submit' name ='submit' value='Valider Ajout'> </form> </div>";
-}
 
-// if(isset($_POST['submit'])){
-// echo "<script type='text/javascript'>alert('le film a été ajouté');</script>";
-//     if (isset($_POST['titreOriginal']) && !empty($_POST['titreOriginal']) && isset($_POST['titreFrancais']) && isset($_POST['Image']) ){
-
-//         $titre_orig=$_POST['titreOriginal'];
-//         $titre_fr=$_POST['titreFrancais'];
-//         $genre= $_POST['Genre'];
-//         $realisateur= $_POST['Realisateur'];
-//         $image= $_POST['Image'];
-//         $couleur= $_POST['Couleur'];
-//         $pays=$_POST['Pays'];
-//         $duree = $_POST['Duree'];
-//         $date=$_POST['Date'];
-        // insertValFilm($titre_orig,$titre_fr,$realisateur,$image,$couleur,$pays,$duree,$date);
-        // insertValGenreFilm($genre);
-//     }
-
-// }
 
 
 ?>

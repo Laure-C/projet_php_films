@@ -114,7 +114,7 @@ function filmsInfos(){
 
 function filmsInfos2($id){
     $connexion = connexion();
-    $sql = " SELECT code_film,titre_original,titre_francais,pays,date1,duree,couleur,nom_genre,nom,prenom,nationalite,date_naiss,date_mort,image FROM films natural join individus natural join classification natural join genres where ref_code_film = code_film and realisateur = code_indiv and ref_code_genre = code_genre and code_film=$id";
+    $sql = " SELECT code_film,titre_original,titre_francais,pays,date1,duree,couleur,nom_genre,nom,prenom,nationalite,date_naiss,date_mort,image FROM films natural join individus natural join classification natural join genres where ref_code_film = code_film and realisateur = code_indiv and ref_code_genre = code_genre and code_film=$id"; 
     $query = connexion()->query($sql);
     $connexion = NULL;
     return $query;
@@ -150,19 +150,19 @@ function insertValFilm($titre_org,$titre_fr,$realisateur,$image,$couleur,$pays,$
     $connexion = connexion();
     $Id= maxIdFilm()+1;
     $realisateur = trouverIdIndividu($realisateur['nom'],$realisateur['prenom']);
-    $sql = $connexion()->prepare('INSERT INTO films(code_indiv,titre_orginal,titre_francais,pays,date1,duree,couleur,realisateur,image) VALUES(:Id,:titre_org,:titre_fr,:pays,:date1,:duree,:couleur,:realisateur,:image)');
-    $sql->execute(array(
-    'Id' => $Id,
-    'titre_org' => $titre_org,
-    'titre_fr' => $titre_fr,
-    'pays' => $pays,
-    'date1' => $date1,
-    'duree' => $duree,
-    'couleur' => $couleur,
-    'realisateur' => $realisateur,
-    'image' => $image
-    ));
+    $stmt = $connexion()->prepare('INSERT INTO films(code_indiv,titre_orginal,titre_francais,pays,date1,duree,couleur,realisateur,image) VALUES(:Id,:titre_org,:titre_fr,:pays,:date1,:duree,:couleur,:realisateur,:image)');
+    $stmt -> bindParam(':Id',$Id);
+    $stmt -> bindParam(':titre_org',$titre_org);
+    $stmt -> bindParam(':titre_fr', $titre_fr);
+    $stmt -> bindParam(':pays',$pays);
+    $stmt -> bindParam(':date1',$date1);
+    $stmt -> bindParam(':duree',$duree);
+    $stmt -> bindParam(':couleur', $couleur);
+    $stmt -> bindParam(':realisateur', $realisateur);
+    $stmt -> bindParam(':image',$image);
+    $stmt -> execute();
     $connexion = NULL;
+    echo "Vous avez ajouté le film : ".$titre_org;
 }
 
 
@@ -170,10 +170,10 @@ function insertValGenreFilm($genre){
     $connexion = connexion();
     $Id= maxIdFilm();
     $genre = trouverIdGenre($genre);
-    $sql = $connexion()-> prepare('INSERT INTO classificaiton(ref_code_film,ref_code_genre) VALUES(:Id,:genre)');
-    $sql->execute(array(
-    'Id' => $Id,
-    'genre' => $genre));
+    $stmt = $connexion()-> prepare('INSERT INTO classificaiton(ref_code_film,ref_code_genre) VALUES(:Id,:genre)');
+    $stmt -> bindParam(':Id',$Id);
+    $stmt -> bindParam(':genre',$genre);
+    $stmt -> execute();
     $connexion = NULL;
 }
 
