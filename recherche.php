@@ -123,11 +123,15 @@ function question_radiobutton($q){
     echo'<div class ="asideD">';
 
   $lesImages= rechercheImages($_POST['recherche']);
-  foreach ($lesImages as $im){
-    echo '<a href="consulterFilm.php?ID='.$im["code_film"].'"><input type="image" src="'.$im["image"].'" alt="image"></a>';}
 
+  else{
+  foreach ($lesImages as $im){
+    echo '<a href="consulterFilm.php?ID='.$im["code_film"].'"><input type="image" src="'.$im["image"].'" alt="image"></a>';
+  }
+}
     echo '</div>';
 
+    
 
   ?>
 
