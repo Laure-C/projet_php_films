@@ -27,7 +27,7 @@
         echo "<h2>".$ff['titre_francais']."</h2>";
         echo "<div class='film'><input type='image' src=".$ff['image']." alt='image'>";
         echo "<p>Film : ".$ff['date1']."</p>";
-        echo "<p>Produit au/à ".$ff['pays']."</p>";
+        echo "<p>Production : ".$ff['pays']."</p>";
         echo "<p>Durée : ".$ff['duree']."</p>";
         echo "<p>Genre du film : ".$ff['nom_genre']."</p>";
         echo "<p>Film réalisé en ".$ff['couleur']."</p></div>";
