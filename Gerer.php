@@ -7,18 +7,9 @@
   </head>
   <body>
     <!-- Haut de la page -->
-    <div class="haut">
-    <div class="hauthaut">
-        <a href="accueil.php"><img src="https://www.pinclipart.com/picdir/big/178-1785162_white-home-icon-png-vector-royalty-free-download.png" alt="home"></a>
-        <a href="voirFilm.php"><p >Voir film</p></a>
-        <a href="Gerer.php" class="pageactive"><p>Gérer/Ajouter</p></a>
-        <a href="plusInformations.html"><p>Plus d'informations</p></a>
-      </div>
-
-      <div class="hautbas">
-        <h1>Gestion</h1>
-      </div>
-    </div>
+    <?php
+      require 'header.html';
+     ?>
 
     <!-- Contenue de la page -->
     <div class="contenue">
@@ -28,11 +19,11 @@
       <form name="choixIndiv" action="AjouterIndiv.php" method="post">
       <input type="submit" class="GererSub" value="Ajouter un individu" align=''>
       </form>
-      <br/> 
+      <br/>
       <form name="choixGenre" action="AjouterGenre.php" method="post">
       <input type="submit" class="GererSub" value="Ajouter un genre de film">
       </form>
-      <br/> 
+      <br/>
       <form name="choixFilm" action="AjouterFilm.php" method="post">
       <input type="submit" class="GererSub" value="Ajouter un film">
       </form>

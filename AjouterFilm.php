@@ -7,17 +7,9 @@
   </head>
   <body>
     <!-- Haut de la page -->
-    <div class="haut">
-    <div class="hauthaut">
-        <a href="accueil.php"><img src="https://www.pinclipart.com/picdir/big/178-1785162_white-home-icon-png-vector-royalty-free-download.png" alt="home"></a>
-        <a href="voirFilm.php"><p >Voir film</p></a>
-        <a href="Gerer.php" class="pageactive" ><p>Gérer/Ajouter</p></a>
-        <a href="plusInformations.html"><p> Plus d'informations </p></a>
-      </div>
-      <div class="hautbas">
-        <h1> Ajouter un film </h1>
-      </div>
-    </div>
+    <?php
+      require 'header.html';
+     ?>
 
     <div class = "main">
     <?php
@@ -100,7 +92,7 @@ function question_autoCompl($q){
 
 function question_duree($q){
     echo $q['text'] ."<br/><input type='range' class='slider' name='$q[name]' id='$q[name]' min='30' max='300' value='130' step='1' oninput='result.value=parseInt($q[name].value)' autocomplete='off'>
-        <output name='result'>130</output> <br/>"; 
+        <output name='result'>130</output> <br/>";
 }
 
 function question_listeDeroulante1($q){
@@ -128,7 +120,7 @@ function question_listeDeroulante2($q){
 }
 
 function question_date($q){
-    echo $q['text'] ."<br/><input type='number' name='$q[name]' value='2000' min='1800' max='2100'><br/>"; 
+    echo $q['text'] ."<br/><input type='number' name='$q[name]' value='2000' min='1800' max='2100'><br/>";
 }
 
 
@@ -174,7 +166,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 //         $duree = $_POST['Duree'];
 //         $date=$_POST['Date'];
         // insertValFilm($titre_orig,$titre_fr,$realisateur,$image,$couleur,$pays,$duree,$date);
-        // insertValGenreFilm($genre); 
+        // insertValGenreFilm($genre);
 //     }
 
 // }
@@ -182,6 +174,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 ?>
     </div>
-                                    
+
     </body>
 </html>

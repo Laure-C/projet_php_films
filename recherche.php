@@ -8,19 +8,9 @@
   </head>
   <body>
     <!-- Haut de la page -->
-    <div class="haut">
-      <div class="hauthaut">
-        <a href="accueil.php"><img src="https://icon-library.net/images/home-logo-icon/home-logo-icon-0.jpg" alt="home"></a>
-        <a href="voirFilm.php" class="voirp"><p>Voir film</p></a>
-        <a href="Gerer.php" class="gererp"><p>Gérer/Ajouter</p></a>
-        <a href="plusInformations.html" class="plusp"><p>Plus d'informations</p></a>
-      </div>
-      <div class="hautbas">
-        <h1>Voir film</h1>
-      </div>
-    </div>
     <?php
-    
+      require 'header.html';
+
     echo"<form method='POST' action='recherche.php'>";
     echo "<input type='text' name='recherche' class='recherche' placeholder='Titre original du film'>";
       echo"<input type='submit' name ='rech' value='Rechercher'>";
@@ -126,11 +116,11 @@ function question_radiobutton($q){
 
   foreach ($lesImages as $im){
     echo '<a href="consulterFilm.php?ID='.$im["code_film"].'"><input type="image" src="'.$im["image"].'" alt="image"></a>';
-  
+
 }
     echo '</div>';
 
-    
+
 
   ?>
 

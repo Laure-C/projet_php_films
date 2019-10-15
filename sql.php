@@ -114,7 +114,7 @@ function filmsInfos(){
 
 function filmsInfos2($id){
     $connexion = connexion();
-    $sql = " SELECT code_film,titre_original,titre_francais,pays,date1,duree,couleur,nom_genre,nom,prenom,nationalite,date_naiss,date_mort,image FROM films natural join individus natural join classification natural join genres where ref_code_film = code_film and realisateur = code_indiv and ref_code_genre = code_genre and code_film=$id"; 
+    $sql = " SELECT code_film,titre_original,titre_francais,pays,date1,duree,couleur,nom_genre,nom,prenom,nationalite,date_naiss,date_mort,image FROM films natural join individus natural join classification natural join genres where ref_code_film = code_film and realisateur = code_indiv and ref_code_genre = code_genre and code_film=$id";
     $query = connexion()->query($sql);
     $connexion = NULL;
     return $query;

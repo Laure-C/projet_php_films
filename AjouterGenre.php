@@ -7,18 +7,8 @@
   </head>
   <body>
     <!-- Haut de la page -->
-    <div class="haut">
-    <div class="hauthaut">
-        <a href="accueil.php"><img src="https://www.pinclipart.com/picdir/big/178-1785162_white-home-icon-png-vector-royalty-free-download.png" alt="home"></a>
-        <a href="voirFilm.php"><p >Voir film</p></a>
-        <a href="Gerer.php" class="pageactive" ><p>Gérer/Ajouter</p></a>
-        <a href="plusInformations.html"><p>Plus d'informations</p></a>
-      </div>
-      <div class="hautbas">
-        <h1>Ajouter un genre</h1>
-      </div>
-      <div class = "main">
     <?php
+      require 'header.html';
     require('sql.php');
     $questions=[
         array(
@@ -57,12 +47,12 @@
           echo '</tr>';
               }
     echo '</table>';
-           
+
     echo "</ol><input type='submit' name ='submit' value='Valider Ajout'> </form> </div>";}
 
     ?>
     </div>
     </div>
-    
+
     </body>
 </html>
