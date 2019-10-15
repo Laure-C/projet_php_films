@@ -114,7 +114,7 @@ function filmsInfos(){
 
 function filmsInfos2($id){
     $connexion = connexion();
-    $sql = " SELECT titre_original,titre_francais,pays,date1,duree,couleur,nom_genre,nom,prenom,nationalite,date_naiss,date_mort,image FROM films natural join individus natural join classification natural join genres where ref_code_film = code_film and realisateur = code_indiv and ref_code_genre = code_genre and code_film=$id"; 
+    $sql = " SELECT code_film,titre_original,titre_francais,pays,date1,duree,couleur,nom_genre,nom,prenom,nationalite,date_naiss,date_mort,image FROM films natural join individus natural join classification natural join genres where ref_code_film = code_film and realisateur = code_indiv and ref_code_genre = code_genre and code_film=$id"; 
     $query = connexion()->query($sql);
     $connexion = NULL;
     return $query;
@@ -122,7 +122,16 @@ function filmsInfos2($id){
 
 function filmsActeurs(){
     $connexion = connexion();
-    $sql = " SELECT code_film,nom,prenom,nationalite,date_naiss,date_mort FROM films natural join acteurs natural join individus where ref_code_film = code_film and ref_code_acteur = code_indiv";
+    $sql = " SELECT code_film,nom,prenom,nationalite,date_naiss,date_mort FROM films natural join acteurs natural join classification natural join individus where ref_code_film = code_film and ref_code_acteur = code_indiv";
+    $query = $connexion->query($sql);
+    $connexion = NULL;
+    return $query;
+}
+
+
+function afficherfilmActeurs($cF){
+    $connexion = connexion();
+    $sql = " SELECT ref_code_film,nom,prenom,nationalite,date_naiss,date_mort from acteurs natural join individus where ref_code_film=$cF and ref_code_acteur=code_indiv";
     $query = $connexion->query($sql);
     $connexion = NULL;
     return $query;
@@ -130,7 +139,7 @@ function filmsActeurs(){
 
 function rechercheImages($t){
     $connexion = connexion();
-    $sql = "SELECT code_film,image FROM films where titre_original like '$t%' order by titre_francais";
+    $sql = "SELECT code_film,image FROM films where UPPER(titre_original) like '%$t%' or LOWER(titre_original) like '%$t%' or titre_original like '%$t%'order by titre_francais";
     $query = $connexion->query($sql);
     $connexion = NULL;
     return $query;

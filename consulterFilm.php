@@ -45,7 +45,25 @@
         else{echo "<div class='realisateur'><h2>Réalisateur</h2><p>Réalisé par ".$ff['nom']." ".$ff['prenom']." (".$ff['date_naiss'].")</p>";}
         echo "<p> Nationnalité : ".$ff['nationalite']."</p></div>";
       }
+
+      $acteurs=afficherfilmActeurs($_GET['ID']);
+      echo "<div class='realisateur'><h2>Acteurs</h2>";
+      foreach($acteurs as $act){
+
+        if ($act['date_mort']!=0){
+           echo "<p>".$act['nom']." ".$act['prenom'].", acteur.rice de nationnalité ".$act['nationalite']." (".$act['date_naiss']."-".$act['date_mort'].")</p>";
+        }
+        else{
+           echo "<p>".$act['nom']." ".$act['prenom'].", acteur.rice de nationnalité ".$act['nationalite']." (".$act['date_naiss'].")</p>";
+        }
+       
+        
       }
+      echo "</div>";
+
+      
+      }
+
       infosFilms($film);
       ?>
       <div>
