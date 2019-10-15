@@ -26,11 +26,12 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     // On présente les questions\
     echo '<div class="Formulaire"><h2>Ajout un genre </h2>';
-    echo "<form method='POST' action='AjouterGenre.php'><ol>";
+    echo "<form method='POST' action='AjouterGenreRep.php'><ol>";
     foreach ($questions as $q){
         echo "<br/>";
         $question_handlers[$q['type']]($q);
     }
+    echo "</ol><input type='submit' name ='submit' value='Valider Ajout'> </form> ";
     echo "<br/>";
     echo"<p align='center'> <b> Le genre que vous allez ajouter ne doit pas faire parti du tableau suivant</b></p>";
     echo "<br/>";
@@ -48,7 +49,7 @@
               }
     echo '</table>';
 
-    echo "</ol><input type='submit' name ='submit' value='Valider Ajout'> </form> </div>";}
+    echo "</div>";}
 
     ?>
     </div>

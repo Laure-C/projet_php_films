@@ -36,7 +36,7 @@
         array(
             "name" => "Pays",
             "exemple" =>"Angleterre",
-            "type" => "listeDeroulante2",
+            "type" => "text",
             "text" => "Pays ",),
 
         array(
@@ -82,7 +82,7 @@
 // Affichage d'une question de type text
 function question_text($q){
 
-    echo $q["text"] ."<br/><input type='text' name=".$q["name"]."id=".$q["name"]." autocomplete ='off' placeholder='$q[exemple]' required><br/>";
+    echo $q["text"] ."<br/><input type='text' name='$q[name]' id='$q[name]' autocomplete ='off' placeholder='$q[exemple]' required><br/>";
 }
 
 
