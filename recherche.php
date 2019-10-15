@@ -124,10 +124,9 @@ function question_radiobutton($q){
 
   $lesImages= rechercheImages($_POST['recherche']);
 
-  else{
   foreach ($lesImages as $im){
     echo '<a href="consulterFilm.php?ID='.$im["code_film"].'"><input type="image" src="'.$im["image"].'" alt="image"></a>';
-  }
+  
 }
     echo '</div>';
 
