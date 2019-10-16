@@ -60,34 +60,36 @@ function insertValFilm($titre_org,$titre_fr,$realisateur,$image,$couleur,$pays,$
             $id =$i['code_film']+1;
         }
     }
-    echo $id;
-    $realisateur = trouverIdIndividu($realisateur[0],$realisateur[1]);
+
+    $nom = explode(" ",$realisateur)[0];
+    $prenom = explode(" ",$realisateur)[1];
+    $realisateur = trouverIdIndividu($nom,$prenom);
     $stmt = $connexion->prepare('INSERT INTO films(code_film,titre_orginal,titre_francais,pays,date1,duree,couleur,realisateur,image) VALUES(:Id,:titre_org,:titre_fr,:pays,:date1,:duree,:couleur,:realisateur,:image)');
     $stmt -> bindParam(':Id',$id);
     $stmt -> bindParam(':titre_org',$titre_org);
     $stmt -> bindParam(':titre_fr', $titre_fr);
     $stmt -> bindParam(':pays',$pays);
-    $stmt -> bindParam(':date1',$date1);
+    $stmt -> bindParam(':date1',$date);
     $stmt -> bindParam(':duree',$duree);
     $stmt -> bindParam(':couleur', $couleur);
     $stmt -> bindParam(':realisateur', $realisateur);
     $stmt -> bindParam(':image',$image);
     $stmt -> execute();
     $connexion = NULL;
-    echo "Vous avez ajouté le film : ".$titre_org;
+    // couleur radiobutton realisateur liste (nom " " prenom)
+    echo "<br>Vous avez ajouté le film : ".$titre_org;
 }
 
 
 function insertValGenreFilm($genre){
     $connexion = connexion();
-        $Id= listIdFilm();
+    $Id= listIdFilm();
     $id=0;
     foreach($Id as $i){
         if($id == 0){
             $id =$i['code_film'];
         }
     }
-
     $idgenre = trouverIdGenre($genre);
     $stmt = $connexion-> prepare('INSERT INTO classificaiton(ref_code_film,ref_code_genre) VALUES(:Id,:genre)');
     $stmt -> bindParam(':Id',$id);
@@ -96,17 +98,18 @@ function insertValGenreFilm($genre){
     $connexion = NULL;
 }
 
-    if(isset($_POST['titreOriginal']) && isset($_POST['titreFrancais']) && isset($_POST['Pays']) && isset($_POST['Date']) && isset($_POST['Duree']) && isset($_POST['Couleur']) && isset($_POST['real']) && isset($_POST['genre'])){
+    if(isset($_POST['titreOriginal']) && isset($_POST['titreFrancais']) && isset($_POST['Pays']) && isset($_POST['Date']) && isset($_POST['Duree']) && isset($_POST['couleur']) && isset($_POST['real']) && isset($_POST['genre'])){
 
         $titre_orig=$_POST['titreOriginal'];
         $titre_fr=$_POST['titreFrancais'];
         $genre= $_POST['genre'];
         $realisateur= $_POST['real'];
         $image= $_POST['Image'];
-        $couleur= $_POST['Couleur'];
+        $couleur= $_POST['couleur'];
         $pays=$_POST['Pays'];
         $duree = $_POST['Duree'];
         $date=$_POST['Date'];
+        echo $genre;
         insertValFilm($titre_orig,$titre_fr,$realisateur,$image,$couleur,$pays,$duree,$date);
         insertValGenreFilm($genre); 
         echo " Vous pouvez maintenant consulter les films ! ";

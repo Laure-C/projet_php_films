@@ -57,20 +57,25 @@
 
         array(
             "name" => "Couleur",
-            "type" => "radiobutton",
-            "text" => "Le film est en noir et blanc ou en couleur ? ",
-            "choices" =>[
-             array(
-                "text" => "NB",
-                "value" => "nb"),
-            array(
-                "text" => "couleur",
-                "value" => "couleur"),
-            array(
-                "text" => "NB/couleur",
-                "value" => "couleur")
+            "type" => "listeDeroulante11",
+            "text" => "Le film est en noir et blanc ou en couleur ? ",),
 
-            ],),
+        // array(
+        //     "name" => "Couleur",
+        //     "type" => "radiobutton",
+        //     "text" => "Le film est en noir et blanc ou en couleur ? ",
+        //     "choices" =>[
+        //      array(
+        //         "text" => "NB",
+        //         "value" => "nb"),
+        //     array(
+        //         "text" => "couleur",
+        //         "value" => "couleur"),
+        //     array(
+        //         "text" => "NB/couleur",
+        //         "value" => "couleur")
+
+        //     ],),
 
         array(
             "name" => "Image",
@@ -114,6 +119,10 @@ function question_radiobutton($q){
     echo "<br> <p>* NB = noir et blanc</p>";
 }
 
+function question_listeDeroulante11($q){
+    echo $q['text'].'<br/>';
+    echo listeDeroulante(Couleur(),"couleur",'couleur');
+}
 
 function question_listeDeroulante2($q){
     echo $q['text'].'<br/>';
@@ -124,7 +133,6 @@ function question_date($q){
     echo $q['text'] ."<br/><input type='number' name=".$q["name"]." value='2000' min='1800' max='2100'><br/>";
 }
 
-
 function question_listeDeroulante3($q){
     echo $q["text"].'<br/>';
     echo listeDeroulante2(realisateur(),"real",'nom','prenom');
@@ -134,6 +142,7 @@ $question_handlers = array(
     "text" => "question_text",
     "date" => "question_date",
     "listeDeroulante1" => "question_listeDeroulante1",
+    "listeDeroulante11" => "question_listeDeroulante11",
     "listeDeroulante2" => "question_listeDeroulante2",
     "listeDeroulante3" => "question_listeDeroulante3",
     "radiobutton"  => "question_radiobutton",

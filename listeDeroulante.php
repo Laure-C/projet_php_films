@@ -8,6 +8,10 @@ function listeDeroulante($listElem,$name,$val_Voulue){
         $cpt+=1;
         echo "<option name=$cpt >".$rs[$val_Voulue]."</option><br/>";
     }
+    if($name == "couleur"){
+        $cpt+=1;
+        echo "<option name=$cpt > NB/Couleur</option><br/>";
+    }
     echo "</select><br/>";
 }
 
