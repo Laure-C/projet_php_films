@@ -16,7 +16,6 @@
      </div>
    </div>
     <?php
-      require 'header.html';
     require('sql.php');
     $questions=[
         array(
