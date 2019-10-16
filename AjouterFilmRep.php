@@ -6,10 +6,16 @@
     <title>Ajout films</title>
   </head>
   <body>
-    
+    <div class="haut">
     <?php
-
-    require 'header.html';
+      require 'header.html';
+     ?>
+     <div class="hautbas">
+       <h1>Ajouter un genre</h1>
+     </div>
+   </div>
+   
+    <?php
     echo "<div class = 'main'>";
 
     function connexion(){
@@ -75,7 +81,6 @@ function insertValFilm($titre_org,$titre_fr,$realisateur,$image,$couleur,$pays,$
     $stmt -> bindParam(':realisateur', $realisateur);
     $stmt -> bindParam(':image',$image);
     $stmt -> execute();
-    $connexion = NULL;
     // couleur radiobutton realisateur liste (nom " " prenom)
     echo "<br>Vous avez ajouté le film : ".$titre_org;
 }
@@ -95,7 +100,6 @@ function insertValGenreFilm($genre){
     $stmt -> bindParam(':Id',$id);
     $stmt -> bindParam(':genre',$idgenre);
     $stmt -> execute();
-    $connexion = NULL;
 }
 
     if(isset($_POST['titreOriginal']) && isset($_POST['titreFrancais']) && isset($_POST['Pays']) && isset($_POST['Date']) && isset($_POST['Duree']) && isset($_POST['couleur']) && isset($_POST['real']) && isset($_POST['genre'])){
@@ -109,7 +113,7 @@ function insertValGenreFilm($genre){
         $pays=$_POST['Pays'];
         $duree = $_POST['Duree'];
         $date=$_POST['Date'];
-        echo $genre;
+
         insertValFilm($titre_orig,$titre_fr,$realisateur,$image,$couleur,$pays,$duree,$date);
         insertValGenreFilm($genre); 
         echo " Vous pouvez maintenant consulter les films ! ";

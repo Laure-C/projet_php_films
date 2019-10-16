@@ -7,9 +7,15 @@
   </head>
   <body>
     <!-- Haut de la page -->
+
+    <div class="haut">
     <?php
       require 'header.html';
      ?>
+     <div class="hautbas">
+       <h1>Ajouter un genre</h1>
+     </div>
+   </div>
 
     <div class = "main">
     <?php
