@@ -124,7 +124,6 @@ function question_date($q){
     echo $q['text'] ."<br/><input type='number' name=".$q["name"]." value='2000' min='1800' max='2100'><br/>";
 }
 
-
 function question_listeDeroulante3($q){
     echo $q["text"].'<br/>';
     echo listeDeroulante2(realisateur(),"real",'nom','prenom');

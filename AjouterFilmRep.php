@@ -48,6 +48,7 @@ function trouverIdIndividu($nom,$prenom){
     $sql = "SELECT code_indiv from films natural join individus where nom = $nom and prenom = $prenom  group by code_indiv";
     $query = $connexion->query($sql);
     $connexion = NULL;
+    echo $sql;
     return $query;
 }
 
@@ -60,21 +61,22 @@ function insertValFilm($titre_org,$titre_fr,$realisateur,$image,$couleur,$pays,$
             $id =$i['code_film']+1;
         }
     }
-    echo $id;
     $realisateur = trouverIdIndividu($realisateur[0],$realisateur[1]);
     $stmt = $connexion->prepare('INSERT INTO films(code_film,titre_orginal,titre_francais,pays,date1,duree,couleur,realisateur,image) VALUES(:Id,:titre_org,:titre_fr,:pays,:date1,:duree,:couleur,:realisateur,:image)');
     $stmt -> bindParam(':Id',$id);
     $stmt -> bindParam(':titre_org',$titre_org);
     $stmt -> bindParam(':titre_fr', $titre_fr);
     $stmt -> bindParam(':pays',$pays);
-    $stmt -> bindParam(':date1',$date1);
+    $stmt -> bindParam(':date1',$date);
     $stmt -> bindParam(':duree',$duree);
     $stmt -> bindParam(':couleur', $couleur);
     $stmt -> bindParam(':realisateur', $realisateur);
     $stmt -> bindParam(':image',$image);
     $stmt -> execute();
     $connexion = NULL;
-    echo "Vous avez ajouté le film : ".$titre_org;
+    echo "<br>".$titre_org;
+    // couleur radiobutton realisateur liste (nom " " prenom)
+    echo "<br>Vous avez ajouté le film : ".$titre_org;
 }
 
 
@@ -87,7 +89,6 @@ function insertValGenreFilm($genre){
             $id =$i['code_film'];
         }
     }
-
     $idgenre = trouverIdGenre($genre);
     $stmt = $connexion-> prepare('INSERT INTO classificaiton(ref_code_film,ref_code_genre) VALUES(:Id,:genre)');
     $stmt -> bindParam(':Id',$id);
