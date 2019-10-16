@@ -17,7 +17,6 @@
      </div>
    </div>
     <?php
-      require 'header.html';
 
     echo"<form method='POST' action='recherche.php'>";
     echo "<input type='text' name='recherche' class='recherche' placeholder='Titre original du film'>";
@@ -32,31 +31,39 @@
     $questions=[
 
 
-        array(
-            "name" => "Titre original",
-            "type" => "radiobutton",
-            "text" => "Titre original",
-            "choices" =>[
-              array(
-                "text" => "Ordre alphabétique",
-                "value" => "aph"),
-              array(
-                "text" => "Ordre inverse alphabétique",
-                "value" => "Non_aph")
-            ]),
-        array(
-            "name" => "Titre français",
-            "type" => "radiobutton",
-            "text" => "Titre en français",
-            "choices" =>[
-              array(
-                "text" => "Ordre alphabétique",
-                "value" => "aph"),
-              array(
-                "text" => "Ordre inverse alphabétique",
-                "value" => "Non_aph")
+      array(
+        "name" => "Tri",
+        "type" => "radiobutton",
+        "text" => "Trier par",
+        "choices" =>[
+          array(
+            "text" => "Alphabétique original",
+            "value" => "aph_o"),
+          array(
+            "text" => "Alphabétique inverse original",
+            "value" => "Non_aph_o"),
+          array(
+            "text" => "Alphabétique français",
+            "value" => "aph_fr"),
+          array(
+            "text" => "Alphabétique inverse français",
+            "value" => "Non_aph_fr")
 
-            ]),
+        ]),
+    // array(
+    //     "name" => "Titre français",
+    //     "type" => "radiobutton",
+    //     "text" => "Titre en français",
+    //     "choices" =>[
+    //       array(
+    //         "text" => "Ordre alphabétique",
+    //         "value" => "aph"),
+    //       array(
+    //         "text" => "Ordre inverse alphabétique",
+    //         "value" => "Non_aph")
+
+    //     ]),
+
 
           array(
             "name" => "Genre",
