@@ -3,13 +3,75 @@
 function connexion(){
     try{
         // $connexion = new PDO('mysql:host=servinfo-mariadb;dbname=DBdecaux;charset=utf8','decaux','decaux');
-        $connexion = new PDO('mysql:host=localhost;dbname=DBchatenet;charset=utf8','root','');
+        // $connexion = new PDO('mysql:host=localhost;dbname=DBchatenet;charset=utf8','root','');
+        $connexion = new PDO('mysql:host=servinfo-mariadb;dbname=DBhun;charset=utf8','hun','hun');
         return $connexion;
         }
     catch(PDOException $e){
         die("Erreur ".$e->getMessage());
     }
 }
+
+
+function triFilms($genre, $pays, $real){$where = "";
+    if ($genre != ""){
+        if ($where==""){
+            $where = "WHERE ";
+        }
+        else{
+            $where .= " and ";
+        }
+        $genre = explode("<",$genre)[0];
+        $where .= "genre IN (
+            SELECT code_genre 
+            FROM genres 
+            WHERE nom_genre=\"$genre\" 
+        )";
+    }
+    if ($pays != ""){
+        if ($where==""){
+            $where = "WHERE ";
+        }
+        else{
+            $where .= " and ";
+        }
+        $pays = explode("<",$pays)[0];
+        $where .= "pays=\"$pays\"";
+    }
+    if ($real != ""){
+        if ($where==""){
+            $where = "WHERE ";
+        }
+        else{
+            $where .= " and ";
+        }
+        $nom = explode(" ",$real)[0];
+        $prenom = explode(" ",$real)[1];
+        $prenom = explode("<",$prenom)[0];
+        
+        $where .= "realisateur IN (
+            SELECT code_indiv 
+            FROM individus 
+            WHERE nom=\"$nom\" 
+                and prenom=\"$prenom\"
+        )";
+    }
+    return $where;
+}
+
+function imagesss($genre, $pays, $real){
+    $connexion = connexion();
+    
+    $where = triFilms($genre, $pays, $real);
+    $sql = "SELECT code_film,image 
+            FROM films " 
+            .$where.
+            " GROUP BY code_film";
+    $query = $connexion->query($sql);
+    $connexion = NULL;
+    return $query;
+}
+
 
 function images(){
     $connexion = connexion();

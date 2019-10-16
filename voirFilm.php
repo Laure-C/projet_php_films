@@ -115,11 +115,29 @@ function question_radiobutton($q){
 
 
 
-  $lesImages= images();
-  // echo '<form action="consulterFilm.php" method="post">'
-  foreach ($lesImages as $im){
-    echo '<a href="consulterFilm.php?ID='.$im["code_film"].'"><input type="image" src="'.$im["image"].'" alt="image"></a>';
-  }
+// AFFICHAGE DES IMAGES DE FILM
+
+$genre = "";
+$pays = "";
+$real = "";
+if ((isset($_POST['genre'])) and (!empty($_POST['genre'])) ) {
+  $genre = $_POST['genre'] . "<br/>";
+}
+if ((isset($_POST['pays'])) and (!empty($_POST['pays'])) ) {
+  $pays = $_POST['pays'] . "<br/>";
+}
+if ((isset($_POST['real'])) and (!empty($_POST['real'])) ) {
+  $real = $_POST['real'] . "<br/>";
+}
+
+$lesImages= imagesss($genre, $pays, $real);
+// echo '<form action="consulterFilm.php" method="post">'
+// var_dump($lesImages);
+foreach ($lesImages as $im){
+  echo '<a href="consulterFilm.php?ID='.$im["code_film"].'"><input type="image" src="'.$im["image"].'" alt="image"></a>';
+}
+
+
 echo '</div>';
 
 
