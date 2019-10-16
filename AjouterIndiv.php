@@ -48,19 +48,19 @@
             "type" => "date",
             "text" => "Date de décès ",),
 
-        array(
-            "name" => "Acteur",
-            "type" => "radiobutton",
-            "text" => "Cet individu est-il un acteur.rice ? ",
-            "choices" =>[
-             array(
-                "text" => "Oui",
-                "value" => "oui"),
-            array(
-                "text" => "Non",
-                "value" => "non")
+        // array(
+        //     "name" => "Acteur",
+        //     "type" => "radiobutton",
+        //     "text" => "Cet individu est-il un acteur.rice ? ",
+        //     "choices" =>[
+        //      array(
+        //         "text" => "Oui",
+        //         "value" => "oui"),
+        //     array(
+        //         "text" => "Non",
+        //         "value" => "non")
 
-            ],)
+        //     ],)
       ];
 
 
@@ -102,7 +102,7 @@ $question_handlers = array(
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     // On présente les questions
     echo '<div class="Formulaire"><h2>Ajout d\'informations sur un individu</h2>';
-    echo "<form method='POST' action='accueil.php'><ol>";
+    echo "<form method='POST' action='AjouterIndivRep.php'><ol>";
     foreach ($questions as $q){
         echo "<br/>";
         $question_handlers[$q['type']]($q);
