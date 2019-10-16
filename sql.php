@@ -13,7 +13,8 @@ function connexion(){
 }
 
 
-function triFilms($genre, $pays, $real){$where = "";
+function triFilms($genre, $pays, $real){
+    $where = "";
     if ($genre != ""){
         if ($where==""){
             $where = "WHERE ";
@@ -21,7 +22,6 @@ function triFilms($genre, $pays, $real){$where = "";
         else{
             $where .= " and ";
         }
-        $genre = explode("<",$genre)[0];
         $where .= "ref_code_genre IN (
             SELECT code_genre 
             FROM genres 
@@ -47,7 +47,6 @@ function triFilms($genre, $pays, $real){$where = "";
         }
         $nom = explode(" ",$real)[0];
         $prenom = explode(" ",$real)[1];
-        $prenom = explode("<",$prenom)[0];
         
         $where .= "realisateur IN (
             SELECT code_indiv 
@@ -57,6 +56,40 @@ function triFilms($genre, $pays, $real){$where = "";
         )";
     }
     return $where;
+}
+function orderbyFilms($tri){
+    $orderby = "";
+    $trii = "";
+    if ($tri != ""){
+        if ($tri == "aph_o"){
+            $trii = "titre_original";
+        }
+        if ($tri == "Non_aph_o"){
+            $trii = "DESC titre_original";
+        }
+        if ($tri == "aph_fr"){
+            $trii = "titre_francais";
+        }
+        if ($tri == "Non_aph_fr"){
+            $trii = "DESC titre_francais";
+        }
+        $orderby .= "ORDER BY $trii";
+    }
+    return $orderby;
+}
+
+function imagesssss($genre, $pays, $real, $tri){
+    $connexion = connexion();
+    
+    $where = triFilms($genre, $pays, $real);
+    $orderby = orderbyFilms($tri);
+    $sql = "SELECT code_film,image 
+            FROM films INNER JOIN classification ON films.code_film=classification.ref_code_film " 
+            .$where.
+            " GROUP BY code_film ".$orderby;
+    $query = $connexion->query($sql);
+    $connexion = NULL;
+    return $query;
 }
 
 function imagesss($genre, $pays, $real){

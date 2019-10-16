@@ -8,8 +8,16 @@
   </head>
   <body>
     <!-- Haut de la page -->
+    <div class = "haut">
+    <?php 
+    require 'header.html';
+    ?>
+    <div class="hautbas">
+    <h1>Voir film</h1>
+    </div>
+    </div>
     <?php
-      require 'header.html';
+      
 
     echo"<form method='POST' action='recherche.php?R'>";
     echo "<input type='text' name='recherche' class='recherche' placeholder='Titre original du film'>";
@@ -26,30 +34,37 @@
 
 
         array(
-            "name" => "Titre original",
+            "name" => "Tri",
             "type" => "radiobutton",
-            "text" => "Titre original",
+            "text" => "Trier par",
             "choices" =>[
               array(
-                "text" => "Ordre alphabétique",
-                "value" => "aph"),
+                "text" => "Alphabétique original",
+                "value" => "aph_o"),
               array(
-                "text" => "Ordre inverse alphabétique",
-                "value" => "Non_aph")
+                "text" => "Alphabétique inverse original",
+                "value" => "Non_aph_o"),
+              array(
+                "text" => "Alphabétique français",
+                "value" => "aph_fr"),
+              array(
+                "text" => "Alphabétique inverse français",
+                "value" => "Non_aph_fr")
+  
             ]),
-        array(
-            "name" => "Titre français",
-            "type" => "radiobutton",
-            "text" => "Titre en français",
-            "choices" =>[
-              array(
-                "text" => "Ordre alphabétique",
-                "value" => "aph"),
-              array(
-                "text" => "Ordre inverse alphabétique",
-                "value" => "Non_aph")
+        // array(
+        //     "name" => "Titre français",
+        //     "type" => "radiobutton",
+        //     "text" => "Titre en français",
+        //     "choices" =>[
+        //       array(
+        //         "text" => "Ordre alphabétique",
+        //         "value" => "aph"),
+        //       array(
+        //         "text" => "Ordre inverse alphabétique",
+        //         "value" => "Non_aph")
 
-            ]),
+        //     ]),
 
           array(
             "name" => "Genre",
@@ -117,19 +132,24 @@ function question_radiobutton($q){
 
 // AFFICHAGE DES IMAGES DE FILM
 
+$tri = "";
 $genre = "";
 $pays = "";
 $real = "";
 if ((isset($_POST['genre'])) and (!empty($_POST['genre'])) ) {
-  $genre = $_POST['genre'] . "<br/>";
+  $genre = $_POST['genre'];
 }
 if ((isset($_POST['pays'])) and (!empty($_POST['pays'])) ) {
-  $pays = $_POST['pays'] . "<br/>";
+  $pays = $_POST['pays'];
 }
 if ((isset($_POST['real'])) and (!empty($_POST['real'])) ) {
-  $real = $_POST['real'] . "<br/>";
+  $real = $_POST['real'];
+}
+if ((isset($_POST['Tri'])) and (!empty($_POST['Tri'])) ) {
+  $tri = $_POST['Tri'];
 }
 
+// $lesImages= imagesssss($genre, $pays, $real, $tri);
 $lesImages= imagesss($genre, $pays, $real);
 // echo '<form action="consulterFilm.php" method="post">'
 // var_dump($lesImages);
