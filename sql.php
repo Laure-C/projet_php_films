@@ -22,7 +22,7 @@ function triFilms($genre, $pays, $real){$where = "";
             $where .= " and ";
         }
         $genre = explode("<",$genre)[0];
-        $where .= "genre IN (
+        $where .= "ref_code_genre IN (
             SELECT code_genre 
             FROM genres 
             WHERE nom_genre=\"$genre\" 
@@ -64,7 +64,7 @@ function imagesss($genre, $pays, $real){
     
     $where = triFilms($genre, $pays, $real);
     $sql = "SELECT code_film,image 
-            FROM films " 
+            FROM films INNER JOIN classification ON films.code_film=classification.ref_code_film " 
             .$where.
             " GROUP BY code_film";
     $query = $connexion->query($sql);
