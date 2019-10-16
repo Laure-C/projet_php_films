@@ -14,7 +14,7 @@
        <h1>Ajouter un genre</h1>
      </div>
    </div>
-   
+
     <?php
     echo "<div class = 'main'>";
 
@@ -51,9 +51,8 @@ function trouverIdGenre($nom){
 
 function trouverIdIndividu($nom,$prenom){
     $connexion = connexion();
-    $sql = "SELECT code_indiv from films natural join individus where nom = $nom and prenom = $prenom  group by code_indiv";
+    $sql = "SELECT code_indiv from individus where nom = '$nom' and prenom = '$prenom'";
     $query = $connexion->query($sql);
-    $connexion = NULL;
     return $query;
 }
 
@@ -66,10 +65,13 @@ function insertValFilm($titre_org,$titre_fr,$realisateur,$image,$couleur,$pays,$
             $id =$i['code_film']+1;
         }
     }
-
     $nom = explode(" ",$realisateur)[0];
     $prenom = explode(" ",$realisateur)[1];
     $realisateur = trouverIdIndividu($nom,$prenom);
+    foreach($realisateur as $r){
+        $re =$r['code_indiv'] ;
+    }
+    echo $re;
     $stmt = $connexion->prepare('INSERT INTO films(code_film,titre_orginal,titre_francais,pays,date1,duree,couleur,realisateur,image) VALUES(:Id,:titre_org,:titre_fr,:pays,:date1,:duree,:couleur,:realisateur,:image)');
     $stmt -> bindParam(':Id',$id);
     $stmt -> bindParam(':titre_org',$titre_org);
@@ -78,7 +80,7 @@ function insertValFilm($titre_org,$titre_fr,$realisateur,$image,$couleur,$pays,$
     $stmt -> bindParam(':date1',$date);
     $stmt -> bindParam(':duree',$duree);
     $stmt -> bindParam(':couleur', $couleur);
-    $stmt -> bindParam(':realisateur', $realisateur);
+    $stmt -> bindParam(':realisateur', $re);
     $stmt -> bindParam(':image',$image);
     $stmt -> execute();
     // couleur radiobutton realisateur liste (nom " " prenom)
@@ -112,7 +114,9 @@ function insertValGenreFilm($genre){
         $couleur= $_POST['couleur'];
         $pays=$_POST['Pays'];
         $duree = $_POST['Duree'];
+
         $date=$_POST['Date'];
+        $date= explode("-",$date)[0];
 
         insertValFilm($titre_orig,$titre_fr,$realisateur,$image,$couleur,$pays,$duree,$date);
         insertValGenreFilm($genre); 

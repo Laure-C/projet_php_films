@@ -3,8 +3,8 @@
 function connexion(){
     try{
         // $connexion = new PDO('mysql:host=servinfo-mariadb;dbname=DBdecaux;charset=utf8','decaux','decaux');
-        // $connexion = new PDO('mysql:host=localhost;dbname=DBchatenet;charset=utf8','root','');
-        $connexion = new PDO('mysql:host=servinfo-mariadb;dbname=DBhun;charset=utf8','hun','hun');
+        $connexion = new PDO('mysql:host=localhost;dbname=DBchatenet;charset=utf8','root','');
+        // $connexion = new PDO('mysql:host=servinfo-mariadb;dbname=DBhun;charset=utf8','hun','hun');
         return $connexion;
         }
     catch(PDOException $e){
