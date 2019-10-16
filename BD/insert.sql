@@ -7,7 +7,7 @@ INSERT INTO individus (code_indiv, nom, prenom, nationalite, date_naiss, date_mo
     (608, 'Hoffman             ', 'Dustin              ', 'américaine          ', 1937, 0),
     (370, 'Dunaway             ', 'Faye                ', 'américaine          ', 1941, 0),
     (112, 'Hawks               ', 'Howard              ', 'américaine          ', 1896, 1977),
-    (279, 'von Stroheim        ', 'Erich               ', 'autrichienne        ', 1885, 1957),
+    (279, 'von_Stroheim        ', 'Erich               ', 'autrichienne        ', 1885, 1957),
     (417, 'Dickinson           ', 'Angie               ', 'américaine          ', 1931, 0),
     (418, 'Nelson              ', 'Ricky               ', 'américaine          ', 1940, 0),
     (419, 'Martin              ', 'Dean                ', 'américaine          ', 1917, 1995),
