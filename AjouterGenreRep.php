@@ -6,8 +6,15 @@
     <title>Ajout films</title>
   </head>
   <body>
+    <div class="haut">
+    <?php
+      require 'header.html';
+     ?>
+     <div class="hautbas">
+       <h1>Ajouter un genre</h1>
+     </div>
+   </div>
 
-    
     <?php
 
     require 'header.html';
@@ -60,6 +67,6 @@ function insertGenre($genre){
 
 ?>
     </div>
-                                    
+
     </body>
 </html>

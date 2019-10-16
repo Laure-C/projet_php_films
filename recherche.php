@@ -8,6 +8,14 @@
   </head>
   <body>
     <!-- Haut de la page -->
+    <div class="haut">
+    <?php
+      require 'header.html';
+     ?>
+     <div class="hautbas">
+       <h1>Recherche</h1>
+     </div>
+   </div>
     <?php
       require 'header.html';
 

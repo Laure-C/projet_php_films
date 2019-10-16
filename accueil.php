@@ -8,10 +8,14 @@
   </head>
   <body>
     <!-- Haut de la page -->
+    <div class="haut">
     <?php
       require 'header.html';
      ?>
-
+     <div class="hautbas">
+       <h1>Accueil</h1>
+     </div>
+   </div>
     <!-- Contenue de la page -->
     <div class="contenue">
       <h1>MuseoFilm</h1>
