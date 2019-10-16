@@ -59,8 +59,10 @@ ALTER TABLE individus ADD PRIMARY KEY (code_indiv);
 
 ALTER TABLE films ADD FOREIGN KEY (realisateur) REFERENCES individus (code_indiv);
 
+ALTER TABLE classification ADD PRIMARY KEY (ref_code_film, ref_code_genre);
 ALTER TABLE classification ADD FOREIGN KEY (ref_code_film) REFERENCES films (code_film);
 ALTER TABLE classification ADD FOREIGN KEY (ref_code_genre) REFERENCES genres (code_genre);
 
+ALTER TABLE acteurs ADD PRIMARY KEY (ref_code_film, ref_code_acteur);
 ALTER TABLE acteurs ADD FOREIGN KEY (ref_code_film) REFERENCES films (code_film);
 ALTER TABLE acteurs ADD FOREIGN KEY (ref_code_acteur) REFERENCES individus (code_indiv);
