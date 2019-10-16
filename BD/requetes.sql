@@ -33,6 +33,13 @@ SELECT * FROM films WHERE code_film = 1234567890;
 
 
 
+SELECT code_film 
+FROM films WHERE realisateur IN (
+    SELECT code_indiv 
+    FROM individus
+    WHERE nom="Spielberg"
+);
+
 
 -- INSERTS
 
