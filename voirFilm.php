@@ -149,8 +149,8 @@ if ((isset($_POST['Tri'])) and (!empty($_POST['Tri'])) ) {
   $tri = $_POST['Tri'];
 }
 
-// $lesImages= imagesssss($genre, $pays, $real, $tri);
-$lesImages= imagesss($genre, $pays, $real);
+$lesImages= imagesssss($genre, $pays, $real, $tri);
+// $lesImages= imagesss($genre, $pays, $real);
 // echo '<form action="consulterFilm.php" method="post">'
 // var_dump($lesImages);
 foreach ($lesImages as $im){

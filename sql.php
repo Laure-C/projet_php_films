@@ -3,8 +3,8 @@
 function connexion(){
     try{
         // $connexion = new PDO('mysql:host=servinfo-mariadb;dbname=DBdecaux;charset=utf8','decaux','decaux');
-        $connexion = new PDO('mysql:host=localhost;dbname=DBchatenet;charset=utf8','root','');
-        //$connexion = new PDO('mysql:host=servinfo-mariadb;dbname=DBhun;charset=utf8','hun','hun');
+        // $connexion = new PDO('mysql:host=localhost;dbname=DBchatenet;charset=utf8','root','');
+        $connexion = new PDO('mysql:host=servinfo-mariadb;dbname=DBhun;charset=utf8','hun','hun');
         return $connexion;
         }
     catch(PDOException $e){
@@ -65,13 +65,13 @@ function orderbyFilms($tri){
             $trii = "titre_original";
         }
         if ($tri == "Non_aph_o"){
-            $trii = "DESC titre_original";
+            $trii = "titre_original DESC";
         }
         if ($tri == "aph_fr"){
             $trii = "titre_francais";
         }
         if ($tri == "Non_aph_fr"){
-            $trii = "DESC titre_francais";
+            $trii = "titre_francais DESC";
         }
         $orderby .= "ORDER BY $trii";
     }
