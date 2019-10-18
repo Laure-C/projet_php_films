@@ -12,7 +12,7 @@
       require 'header.html';
      ?>
      <div class="hautbas">
-       <h1>Ajouter individu</h1>
+       <h1>Ajouter un individu</h1>
      </div>
    </div>
 

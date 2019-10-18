@@ -11,7 +11,7 @@
       require 'header.html';
      ?>
      <div class="hautbas">
-       <h1>Ajouter un genre</h1>
+       <h1>Ajouter un individu</h1>
      </div>
    </div>
    
