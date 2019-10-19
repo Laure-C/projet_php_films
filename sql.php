@@ -3,8 +3,8 @@
 function connexion(){
     try{
         // $connexion = new PDO('mysql:host=servinfo-mariadb;dbname=DBdecaux;charset=utf8','decaux','decaux');
-        $connexion = new PDO('mysql:host=localhost;dbname=DBchatenet;charset=utf8','root','');
-        // $connexion = new PDO('mysql:host=servinfo-mariadb;dbname=DBhun;charset=utf8','hun','hun');
+        // $connexion = new PDO('mysql:host=localhost;dbname=DBchatenet;charset=utf8','root','');
+        $connexion = new PDO('mysql:host=servinfo-mariadb;dbname=DBhun;charset=utf8','hun','hun');
         return $connexion;
         }
     catch(PDOException $e){
@@ -133,7 +133,7 @@ function genresD(){
 
 function realisateur(){
     $connexion = connexion();
-    $sql = "SELECT prenom,nom from individus natural join films where code_indiv in (select realisateur from films) group by prenom,nom";
+    $sql = "SELECT prenom,nom from individus ";
     $query = $connexion->query($sql);
     $connexion = NULL;
     return $query;
@@ -200,13 +200,13 @@ function trouverIdGenre($nom){
 
 }
 
-function trouverIdIndividu($nom,$prenom){
-    $connexion = connexion();
-    $sql = "SELECT code_indiv from films natural join individus where nom = $nom and prenom = $prenom  group by code_indiv";
-    $query = $connexion->query($sql);
-    $connexion = NULL;
-    return $query;
-}
+// function trouverIdIndividu($nom,$prenom){
+//     $connexion = connexion();
+//     $sql = "SELECT code_indiv from films natural join individus where nom = $nom and prenom = $prenom  group by code_indiv";
+//     $query = $connexion->query($sql);
+//     $connexion = NULL;
+//     return $query;
+// }
 
 function filmsInfos(){
     $connexion = connexion();
@@ -252,33 +252,119 @@ function rechercheImages($t){
 
 function insertValFilm($titre_org,$titre_fr,$realisateur,$image,$couleur,$pays,$duree,$date){
     $connexion = connexion();
-    $Id= maxIdFilm()+1;
-    $realisateur = trouverIdIndividu($realisateur['nom'],$realisateur['prenom']);
-    $stmt = $connexion()->prepare('INSERT INTO films(code_indiv,titre_orginal,titre_francais,pays,date1,duree,couleur,realisateur,image) VALUES(:Id,:titre_org,:titre_fr,:pays,:date1,:duree,:couleur,:realisateur,:image)');
-    $stmt -> bindParam(':Id',$Id);
+    $Id= listIdFilm();
+    $id=0;
+    foreach($Id as $i){
+        if($id == 0){
+            $id =$i['code_film']+1;
+        }
+    }
+    $nom = explode(" ",$realisateur)[0];
+    $prenom = explode(" ",$realisateur)[1];
+    $realisateur = trouverIdIndividu($nom,$prenom);
+    foreach($realisateur as $r){
+        $re =$r['code_indiv'] ;
+    }
+    echo $re;
+    $stmt = $connexion->prepare('INSERT INTO films(code_film,titre_orginal,titre_francais,pays,date1,duree,couleur,realisateur,image) VALUES(:Id,:titre_org,:titre_fr,:pays,:date1,:duree,:couleur,:realisateur,:image)');
+    $stmt -> bindParam(':Id',$id);
     $stmt -> bindParam(':titre_org',$titre_org);
     $stmt -> bindParam(':titre_fr', $titre_fr);
     $stmt -> bindParam(':pays',$pays);
-    $stmt -> bindParam(':date1',$date1);
+    $stmt -> bindParam(':date1',$date);
     $stmt -> bindParam(':duree',$duree);
     $stmt -> bindParam(':couleur', $couleur);
-    $stmt -> bindParam(':realisateur', $realisateur);
+    $stmt -> bindParam(':realisateur', $re);
     $stmt -> bindParam(':image',$image);
     $stmt -> execute();
-    $connexion = NULL;
-    echo "Vous avez ajouté le film : ".$titre_org;
+    // couleur radiobutton realisateur liste (nom " " prenom)
+    echo "<br>Vous avez ajouté le film : ".$titre_org;
 }
-
 
 function insertValGenreFilm($genre){
     $connexion = connexion();
-    $Id= maxIdFilm();
-    $genre = trouverIdGenre($genre);
-    $stmt = $connexion()-> prepare('INSERT INTO classificaiton(ref_code_film,ref_code_genre) VALUES(:Id,:genre)');
-    $stmt -> bindParam(':Id',$Id);
-    $stmt -> bindParam(':genre',$genre);
+    $Id= listIdFilm();
+    $id=0;
+    foreach($Id as $i){
+        if($id == 0){
+            $id =$i['code_film'];
+        }
+    }
+    $idgenre = trouverIdGenre($genre);
+    $stmt = $connexion-> prepare('INSERT INTO classificaiton(ref_code_film,ref_code_genre) VALUES(:Id,:genre)');
+    $stmt -> bindParam(':Id',$id);
+    $stmt -> bindParam(':genre',$idgenre);
+    $stmt -> execute();
+}
+
+function insertGenre($genre){
+    $connexion = connexion();
+    $Id= listIdGenre();
+    $id=0;
+    foreach($Id as $i){
+        if($id == 0){
+            $id =$i['code_genre']+1;
+        }
+    }
+    $stmt = $connexion-> prepare('INSERT INTO genres(code_genre,nom_genre) VALUES(:code_genre,:nom_genre)');
+    $stmt -> bindParam(':code_genre',$id);
+    $stmt -> bindParam(':nom_genre',$genre);
     $stmt -> execute();
     $connexion = NULL;
+}
+
+
+function listIdGenre(){
+    $connexion = connexion();
+    $sql = "SELECT code_genre from genres order by code_genre desc";
+    $query = $connexion->query($sql);
+    $connexion = NULL;
+    return $query;
+
+}
+function listIdIndiv(){
+    $connexion = connexion();
+    $sql = "SELECT code_indiv from individus order by code_indiv desc";
+    $query = $connexion->query($sql);
+    $connexion = NULL;
+    return $query;
+}
+function insertValIndiv($nom,$prenom,$nationnalite,$date_naiss,$date_mort){
+    $connexion = connexion();
+    $Id= listIdIndiv();
+    $id=0;
+    foreach($Id as $i){
+        if($id == 0){
+            $id =$i['code_indiv']+1;
+        }
+    }
+
+    $stmt = $connexion->prepare('INSERT INTO individus(code_indiv,nom,prenom,nationalite,date_naiss,date_mort) VALUES(:code_indiv,:nom,:prenom,:nationalite,:date_naiss,:date_mort)');
+    $stmt -> bindParam(':code_indiv',$id);
+    $stmt -> bindParam(':nom',$nom);
+    $stmt -> bindParam(':prenom', $prenom);
+    $stmt -> bindParam(':nationalite',$nationalite);
+    $stmt -> bindParam(':date_naiss',$date_naiss);
+    $stmt -> bindParam(':date_mort',$date_mort);
+    $stmt -> execute();
+    // couleur radiobutton realisateur liste (nom " " prenom)
+    echo "<br>Vous avez ajouté l'individu : ".$nom;
+}
+
+
+function trouverIdIndividu($nom,$prenom){
+    $connexion = connexion();
+    $sql = "SELECT code_indiv from individus where nom = '$nom' and prenom = '$prenom'";
+    $query = $connexion->query($sql);
+    return $query;
+}
+
+function listIdFilm(){
+    $connexion = connexion();
+    $sql = "SELECT code_film from films order by code_film desc";
+    $query = $connexion->query($sql);
+    $connexion = NULL;
+    return $query;
 }
 
 
